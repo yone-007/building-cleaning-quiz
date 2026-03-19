@@ -622,6 +622,10 @@
     <h2>出題範囲を選択</h2>
     <p>カテゴリを選んでスタートしてください。<br>「すべて」を選ぶと全カテゴリから出題されます。</p>
     <div class="filter-row" id="filter-row"><button class="filter-btn active">すべて</button><button class="filter-btn">第1編 建築物と環境衛生</button><button class="filter-btn">第2編 建築物の構造および設備</button><button class="filter-btn">第3編 建築物の内外装材の種類および性質</button><button class="filter-btn">第4編 材料</button><button class="filter-btn">第5編 電気、清掃機械と器具の種類、構造および使用法</button></div>
+
+    <p style="font-size:0.85rem;font-weight:700;color:#444;margin-bottom:10px;">出題数を選択</p>
+    <div class="filter-row" id="count-row"><button class="filter-btn active">10問</button><button class="filter-btn">20問</button><button class="filter-btn">30問</button><button class="filter-btn">すべて</button></div>
+
     <p style="font-size:0.82rem;color:#888;margin-bottom:16px;">問題数: <span id="question-count">16</span> 問</p>
     <button class="start-btn" onclick="startQuiz()">スタート</button>
     <button class="admin-open-btn" onclick="showAdmin()">⚙ 問題を追加・削除する</button>
@@ -1009,6 +1013,7 @@ const QUESTIONS = [
 // アプリケーションロジック
 // ============================================================
 let activeFilter   = "すべて";
+let activeCount    = 10;
 let quizQuestions  = [];
 let currentIndex   = 0;
 let score          = 0;
@@ -1031,12 +1036,28 @@ function initStart() {
     btn.textContent = cat;
     btn.onclick = () => {
       activeFilter = cat;
-      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      document.querySelectorAll("#filter-row .filter-btn").forEach(b => b.classList.remove("active"));
       btn.classList.add("active");
       updateCount();
     };
     filterRow.appendChild(btn);
   });
+
+  // 出題数ボタン
+  const countRow = document.getElementById("count-row");
+  countRow.innerHTML = "";
+  [10, 20, 30, "すべて"].forEach(n => {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn" + (activeCount === n ? " active" : "");
+    btn.textContent = n === "すべて" ? "すべて" : `${n}問`;
+    btn.onclick = () => {
+      activeCount = n;
+      document.querySelectorAll("#count-row .filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+    };
+    countRow.appendChild(btn);
+  });
+
   updateCount();
 }
 
@@ -1470,7 +1491,8 @@ startQuiz = function() {
     ? all
     : all.filter(q => q.category === activeFilter);
 
-  quizQuestions = shuffle(filtered);
+  const shuffled = shuffle(filtered);
+  quizQuestions = (activeCount === "すべて") ? shuffled : shuffled.slice(0, activeCount);
   currentIndex  = 0;
   score         = 0;
   userAnswers   = [];
