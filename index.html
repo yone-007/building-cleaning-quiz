@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ビルクリーニング技能士1級 学科対策</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* スマホ最適化: タップ遅延解消・テキスト選択防止 */
+    button, label, .filter-btn, .option-btn, .action-btn {
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+      background: #f0f4f8;
+      color: #2d3748;
+      min-height: 100vh;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1a56a0, #2b7fd4);
+      color: white;
+      padding: 20px 24px;
+      text-align: center;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    header h1 { font-size: 1.4rem; font-weight: 700; }
+    header p  { font-size: 0.85rem; margin-top: 4px; opacity: 0.85; }
+
+    .container { max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+
+    /* ===== START SCREEN ===== */
+    #start-screen {
+      background: white;
+      border-radius: 12px;
+      padding: 32px 24px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    #start-screen h2 { font-size: 1.2rem; margin-bottom: 12px; }
+    #start-screen p  { color: #555; font-size: 0.95rem; margin-bottom: 24px; line-height: 1.6; }
+
+    .filter-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+
+    .filter-btn {
+      padding: 10px 18px;
+      min-height: 44px;
+      border: 2px solid #1a56a0;
+      border-radius: 20px;
+      background: white;
+      color: #1a56a0;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active, .filter-btn:hover { background: #1a56a0; color: white; }
+    .filter-btn:active { opacity: 0.75; }
+
+    .start-btn {
+      background: #1a56a0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      padding: 16px 40px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      min-height: 52px;
+    }
+
+    .start-btn:hover { background: #154390; }
+    .start-btn:active { background: #0f2f6a; }
+
+    /* ===== QUIZ SCREEN ===== */
+    #quiz-screen { display: none; }
+
+    .progress-bar-wrap {
+      background: #dde3ea;
+      border-radius: 10px;
+      height: 8px;
+      margin-bottom: 16px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, #1a56a0, #2b7fd4);
+      border-radius: 10px;
+      transition: width 0.4s;
+    }
+
+    .progress-label {
+      text-align: right;
+      font-size: 0.82rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .question-card {
+      background: white;
+      border-radius: 12px;
+      padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      margin-bottom: 20px;
+    }
+
+    .question-type-badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 12px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .badge-truefalse { background: #e8f4fd; color: #1a56a0; }
+    .badge-choice    { background: #fdf3e8; color: #c27614; }
+
+    .question-category {
+      font-size: 0.78rem;
+      color: #888;
+      margin-bottom: 10px;
+    }
+
+    .question-page {
+      display: inline-block;
+      font-size: 0.78rem;
+      color: #1a56a0;
+      background: #e8f4fd;
+      border-radius: 6px;
+      padding: 1px 8px;
+      margin-left: 6px;
+      font-weight: 600;
+    }
+
+    .question-text {
+      font-size: 1.05rem;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* ===== OPTIONS ===== */
+    .options { margin-top: 22px; display: flex; flex-direction: column; gap: 10px; }
+
+    /* 正誤式ボタン横並び */
+    .options.truefalse { flex-direction: row; justify-content: center; gap: 16px; }
+
+    .option-btn {
+      width: 100%;
+      padding: 15px 18px;
+      min-height: 52px;
+      border: 2px solid #d0d8e4;
+      border-radius: 8px;
+      background: white;
+      text-align: left;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: border-color 0.15s, background 0.15s;
+      line-height: 1.5;
+    }
+
+    .options.truefalse .option-btn {
+      width: 130px;
+      min-height: 80px;
+      text-align: center;
+      font-size: 2rem;
+      padding: 18px;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: #1a56a0;
+      background: #f0f6ff;
+    }
+
+    .option-btn:active:not(:disabled) {
+      opacity: 0.75;
+      border-color: #1a56a0;
+    }
+
+    .option-btn.correct  { border-color: #22a35b; background: #eafaf1; color: #166038; font-weight: 700; }
+    .option-btn.wrong    { border-color: #e03e3e; background: #fdf0f0; color: #9b1c1c; }
+    .option-btn.reveal   { border-color: #22a35b; background: #eafaf1; color: #166038; font-weight: 700; }
+    .option-btn:disabled { cursor: default; }
+
+    /* ===== FEEDBACK ===== */
+    .feedback {
+      margin-top: 18px;
+      padding: 14px 18px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      line-height: 1.6;
+      display: none;
+    }
+
+    .feedback.correct { background: #eafaf1; border-left: 4px solid #22a35b; color: #155724; }
+    .feedback.wrong   { background: #fdf0f0; border-left: 4px solid #e03e3e; color: #721c24; }
+
+    .feedback-title { font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+    .feedback-explanation { color: #444; }
+
+    .next-btn {
+      display: none;
+      width: 100%;
+      margin-top: 16px;
+      padding: 16px;
+      min-height: 54px;
+      background: #1a56a0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .next-btn:hover  { background: #154390; }
+    .next-btn:active { background: #0f2f6a; }
+
+    /* ===== RESULT SCREEN ===== */
+    #result-screen { display: none; }
+
+    .result-card {
+      background: white;
+      border-radius: 12px;
+      padding: 36px 24px;
+      text-align: center;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .result-score-wrap { margin: 20px 0 28px; }
+
+    .result-circle {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      border: 6px solid;
+    }
+
+    .result-circle .score-num  { font-size: 2.4rem; font-weight: 800; }
+    .result-circle .score-denom{ font-size: 0.9rem; }
+
+    .rank-excellent { border-color: #f5a623; background: #fffbf0; color: #c27614; }
+    .rank-good      { border-color: #22a35b; background: #eafaf1; color: #166038; }
+    .rank-normal    { border-color: #1a56a0; background: #f0f6ff; color: #1a56a0; }
+    .rank-poor      { border-color: #e03e3e; background: #fdf0f0; color: #9b1c1c; }
+
+    .rank-message { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+    .rank-sub     { font-size: 0.9rem; color: #666; }
+
+    .result-detail {
+      margin: 20px 0;
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .detail-box {
+      flex: 1;
+      max-width: 140px;
+      background: #f7f9fc;
+      border-radius: 8px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .detail-box .num  { font-size: 1.6rem; font-weight: 700; }
+    .detail-box .lbl  { font-size: 0.78rem; color: #666; margin-top: 2px; }
+    .detail-box.correct-box .num { color: #22a35b; }
+    .detail-box.wrong-box   .num { color: #e03e3e; }
+
+    .result-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 24px; }
+
+    .action-btn {
+      padding: 14px 28px;
+      min-height: 50px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      border: 2px solid #1a56a0;
+      transition: all 0.2s;
+      flex: 1;
+      min-width: 140px;
+    }
+
+    .action-btn.primary  { background: #1a56a0; color: white; }
+    .action-btn.primary:hover  { background: #154390; }
+    .action-btn.primary:active { background: #0f2f6a; }
+    .action-btn.secondary { background: white; color: #1a56a0; }
+    .action-btn.secondary:hover  { background: #f0f6ff; }
+    .action-btn.secondary:active { background: #dceeff; }
+
+    /* ===== REVIEW ===== */
+    .review-section { margin-top: 28px; text-align: left; }
+    .review-section h3 { font-size: 1rem; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid #e2e8f0; }
+
+    .review-item {
+      background: white;
+      border-radius: 10px;
+      padding: 16px 18px;
+      margin-bottom: 12px;
+      box-shadow: 0 1px 6px rgba(0,0,0,0.06);
+      border-left: 5px solid;
+    }
+
+    .review-item.correct { border-color: #22a35b; }
+    .review-item.wrong   { border-color: #e03e3e; }
+
+    .review-item .ri-meta { font-size: 0.78rem; color: #888; margin-bottom: 6px; }
+    .review-item .ri-q    { font-size: 0.93rem; font-weight: 500; margin-bottom: 8px; line-height: 1.5; }
+    .review-item .ri-ans  { font-size: 0.85rem; }
+    .review-item .ri-correct-ans { color: #22a35b; font-weight: 700; }
+    .review-item .ri-your-ans    { color: #e03e3e; }
+    .review-item .ri-explanation { margin-top: 6px; font-size: 0.83rem; color: #555; line-height: 1.5; }
+
+    /* ===== ADMIN ===== */
+    #admin-screen { display: none; }
+
+    .admin-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .admin-header h2 { font-size: 1.15rem; }
+
+    .admin-form-card {
+      background: white;
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+    }
+
+    .admin-form-card h3 {
+      font-size: 1rem;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .form-row { margin-bottom: 14px; }
+
+    .form-row label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #444;
+      margin-bottom: 5px;
+    }
+
+    .form-row select,
+    .form-row textarea,
+    .form-row input[type="text"] {
+      width: 100%;
+      padding: 9px 12px;
+      border: 1.5px solid #d0d8e4;
+      border-radius: 7px;
+      font-size: 1rem; /* 16px以上でiOSの自動ズームを防ぐ */
+      font-family: inherit;
+      background: #fafbfc;
+      transition: border-color 0.15s;
+    }
+
+    .form-row select:focus,
+    .form-row textarea:focus,
+    .form-row input[type="text"]:focus {
+      outline: none;
+      border-color: #1a56a0;
+      background: white;
+    }
+
+    .form-row textarea { resize: vertical; min-height: 72px; line-height: 1.5; }
+
+    .choice-fields { display: none; }
+    .choice-fields.visible { display: block; }
+
+    .answer-radios {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-top: 6px;
+    }
+
+    .answer-radios label {
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .form-submit-btn {
+      width: 100%;
+      padding: 15px;
+      min-height: 52px;
+      background: #1a56a0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 700;
+      cursor: pointer;
+      margin-top: 6px;
+      transition: background 0.2s;
+    }
+
+    .form-submit-btn:hover  { background: #154390; }
+    .form-submit-btn:active { background: #0f2f6a; }
+
+    .admin-list-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    }
+
+    .admin-list-card h3 {
+      font-size: 1rem;
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .admin-list-card h3 span { font-weight: 400; font-size: 0.85rem; color: #888; }
+
+    .admin-q-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .admin-q-item:last-child { border-bottom: none; }
+
+    .admin-q-info { flex: 1; min-width: 0; }
+
+    .admin-q-meta {
+      font-size: 0.75rem;
+      color: #888;
+      margin-bottom: 4px;
+    }
+
+    .admin-q-text {
+      font-size: 0.9rem;
+      line-height: 1.5;
+      word-break: break-all;
+    }
+
+    .admin-q-badge {
+      display: inline-block;
+      font-size: 0.7rem;
+      padding: 1px 7px;
+      border-radius: 10px;
+      margin-right: 4px;
+      font-weight: 700;
+    }
+
+    .abadge-tf  { background: #e8f4fd; color: #1a56a0; }
+    .abadge-ch  { background: #fdf3e8; color: #c27614; }
+    .abadge-def { background: #f0f0f0; color: #888; }
+    .abadge-usr { background: #eafaf1; color: #22a35b; }
+
+    .del-btn {
+      flex-shrink: 0;
+      padding: 8px 14px;
+      min-height: 44px;
+      border: 1.5px solid #e03e3e;
+      border-radius: 6px;
+      background: white;
+      color: #e03e3e;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.15s;
+      white-space: nowrap;
+    }
+
+    .del-btn:hover  { background: #e03e3e; color: white; }
+    .del-btn:active { background: #b52d2d; color: white; }
+
+    .admin-link-btn {
+      background: none;
+      border: 2px solid #888;
+      border-radius: 8px;
+      padding: 10px 16px;
+      min-height: 44px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      color: #555;
+      font-weight: 700;
+      transition: all 0.2s;
+    }
+
+    .admin-link-btn:hover  { border-color: #1a56a0; color: #1a56a0; }
+    .admin-link-btn:active { border-color: #1a56a0; color: #1a56a0; background: #f0f6ff; }
+
+    .admin-open-btn {
+      display: block;
+      margin: 14px auto 0;
+      background: none;
+      border: none;
+      color: #888;
+      font-size: 0.83rem;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .admin-open-btn:hover { color: #1a56a0; }
+
+    /* ===== EXPORT / IMPORT ===== */
+    .share-card {
+      background: white;
+      border-radius: 12px;
+      padding: 20px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      margin-bottom: 24px;
+    }
+
+    .share-card h3 {
+      font-size: 1rem;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #e2e8f0;
+    }
+
+    .share-card p {
+      font-size: 0.85rem;
+      color: #555;
+      margin-bottom: 14px;
+      line-height: 1.6;
+    }
+
+    .share-btns {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .export-btn {
+      padding: 12px 20px;
+      min-height: 48px;
+      background: #1a56a0;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .export-btn:hover  { background: #154390; }
+    .export-btn:active { background: #0f2f6a; }
+
+    .import-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 12px 20px;
+      min-height: 48px;
+      background: white;
+      color: #1a56a0;
+      border: 2px solid #1a56a0;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      -webkit-tap-highlight-color: transparent;
+      touch-action: manipulation;
+    }
+
+    .import-btn:hover  { background: #f0f6ff; }
+    .import-btn:active { background: #dceeff; }
+  </style>
+</head>
+<body>
+
+<!-- Slack/LINEなど組み込みブラウザ検出バナー -->
+<div id="inapp-banner" style="display:none; background:#ff6b00; color:white; padding:14px 16px; text-align:center; font-size:0.9rem; line-height:1.6; position:sticky; top:0; z-index:999;">
+  ⚠️ このアプリはSlackのブラウザでは正しく動作しません。<br>
+  右上の <strong>「…」→「ブラウザで開く」</strong> をタップしてSafariで開いてください。
+</div>
+
+<header>
+  <h1>ビルクリーニング技能士1級 学科対策</h1>
+  <p>○×式 ＆ 四肢択一式 練習問題</p>
+</header>
+
+<div class="container">
+
+  <!-- ===== スタート画面 ===== -->
+  <div id="start-screen">
+    <h2>出題範囲を選択</h2>
+    <p>カテゴリを選んでスタートしてください。<br>「すべて」を選ぶと全カテゴリから出題されます。</p>
+    <div class="filter-row" id="filter-row"></div>
+    <p style="font-size:0.82rem;color:#888;margin-bottom:16px;">問題数: <span id="question-count">--</span> 問</p>
+    <button class="start-btn" onclick="startQuiz()">スタート</button>
+    <button class="admin-open-btn" onclick="showAdmin()">⚙ 問題を追加・削除する</button>
+  </div>
+
+  <!-- ===== 問題画面 ===== -->
+  <div id="quiz-screen">
+    <div class="progress-bar-wrap">
+      <div class="progress-bar-fill" id="progress-bar"></div>
+    </div>
+    <div class="progress-label" id="progress-label"></div>
+
+    <div class="question-card" id="question-card">
+      <div class="question-type-badge" id="type-badge"></div>
+      <div class="question-category" id="q-category"></div>
+      <div class="question-text" id="q-text"></div>
+      <div id="q-page" style="margin-top:8px;"></div>
+      <div class="options" id="options-wrap"></div>
+      <div class="feedback" id="feedback">
+        <div class="feedback-title" id="feedback-title"></div>
+        <div class="feedback-explanation" id="feedback-explanation"></div>
+      </div>
+    </div>
+
+    <button class="next-btn" id="next-btn" onclick="nextQuestion()">次の問題へ →</button>
+  </div>
+
+  <!-- ===== 結果画面 ===== -->
+  <div id="result-screen">
+    <div class="result-card">
+      <h2 style="font-size:1.3rem;">結果発表</h2>
+      <div class="result-score-wrap">
+        <div class="result-circle" id="result-circle">
+          <div class="score-num" id="score-num"></div>
+          <div class="score-denom" id="score-denom"></div>
+        </div>
+        <div class="rank-message" id="rank-message"></div>
+        <div class="rank-sub"     id="rank-sub"></div>
+      </div>
+      <div class="result-detail">
+        <div class="detail-box correct-box">
+          <div class="num" id="r-correct"></div>
+          <div class="lbl">正解</div>
+        </div>
+        <div class="detail-box wrong-box">
+          <div class="num" id="r-wrong"></div>
+          <div class="lbl">不正解</div>
+        </div>
+        <div class="detail-box">
+          <div class="num" id="r-pct"></div>
+          <div class="lbl">正答率</div>
+        </div>
+      </div>
+      <div class="result-actions">
+        <button class="action-btn primary"   onclick="startQuiz()">もう一度挑戦</button>
+        <button class="action-btn secondary" onclick="showStart()">トップに戻る</button>
+      </div>
+    </div>
+
+    <div class="review-section">
+      <h3>解答の振り返り</h3>
+      <div id="review-list"></div>
+    </div>
+  </div>
+
+  <!-- ===== 管理画面 ===== -->
+  <div id="admin-screen">
+    <div class="admin-header">
+      <h2>問題の追加・削除</h2>
+      <button class="admin-link-btn" onclick="showStart()">← トップに戻る</button>
+    </div>
+
+    <!-- エクスポート / インポート -->
+    <div class="share-card">
+      <h3>問題を共有する</h3>
+      <p>「エクスポート」で自分が追加した問題をJSONファイルとして保存できます。<br>そのファイルを他の人に渡し、「インポート」で読み込むと同じ問題を使えます。</p>
+      <div class="share-btns">
+        <button class="export-btn" onclick="exportQuestions()">⬇ エクスポート（JSONダウンロード）</button>
+        <label class="import-btn">
+          ⬆ インポート（JSONを読み込む）
+          <input type="file" id="import-file" accept=".json" style="display:none;" onchange="importQuestions(event)">
+        </label>
+      </div>
+    </div>
+
+    <!-- 追加フォーム -->
+    <div class="admin-form-card">
+      <h3>問題を追加する</h3>
+
+      <div class="form-row">
+        <label>カテゴリ</label>
+        <select id="f-category">
+          <option>第1編 建築物と環境衛生</option>
+          <option>第2編 建築物の構造および設備</option>
+          <option>第3編 建築物の内外装材の種類および性質</option>
+          <option>第4編 材料</option>
+          <option>第5編 電気、清掃機械と器具の種類、構造および使用法</option>
+          <option>第6編 ビルクリーニング作業法</option>
+          <option>第7編 作業計画</option>
+          <option>第8編 品質管理</option>
+          <option>第9編 廃棄物の処理方法</option>
+          <option>第10編 安全衛生</option>
+          <option>第11編 感染と予防</option>
+          <option>第12編 関係法規</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>問題形式</label>
+        <select id="f-type" onchange="onTypeChange()">
+          <option value="truefalse">○×式</option>
+          <option value="choice">四肢択一式</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label>問題文</label>
+        <textarea id="f-text" placeholder="問題文を入力してください"></textarea>
+      </div>
+
+      <!-- ○×式 正解 -->
+      <div class="form-row" id="tf-answer-row">
+        <label>正解</label>
+        <div class="answer-radios">
+          <label><input type="radio" name="tf-ans" value="true" checked> ○（正しい）</label>
+          <label><input type="radio" name="tf-ans" value="false"> ×（誤り）</label>
+        </div>
+      </div>
+
+      <!-- 四肢択一 選択肢 -->
+      <div class="choice-fields" id="choice-fields">
+        <div class="form-row">
+          <label>① 選択肢</label>
+          <input type="text" id="f-opt0" placeholder="選択肢①">
+        </div>
+        <div class="form-row">
+          <label>② 選択肢</label>
+          <input type="text" id="f-opt1" placeholder="選択肢②">
+        </div>
+        <div class="form-row">
+          <label>③ 選択肢</label>
+          <input type="text" id="f-opt2" placeholder="選択肢③">
+        </div>
+        <div class="form-row">
+          <label>④ 選択肢</label>
+          <input type="text" id="f-opt3" placeholder="選択肢④">
+        </div>
+        <div class="form-row">
+          <label>正解の番号</label>
+          <div class="answer-radios">
+            <label><input type="radio" name="ch-ans" value="0" checked> ①</label>
+            <label><input type="radio" name="ch-ans" value="1"> ②</label>
+            <label><input type="radio" name="ch-ans" value="2"> ③</label>
+            <label><input type="radio" name="ch-ans" value="3"> ④</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <label>テキストのページ番号（省略可）</label>
+        <input type="text" id="f-page" placeholder="例: 42　または　42〜43">
+      </div>
+
+      <div class="form-row">
+        <label>解説文（省略可）</label>
+        <textarea id="f-explanation" placeholder="正解の解説を入力（省略可）" style="min-height:56px;"></textarea>
+      </div>
+
+      <button class="form-submit-btn" onclick="addQuestion()">この問題を追加する</button>
+    </div>
+
+    <!-- 問題一覧 -->
+    <div class="admin-list-card">
+      <h3>登録済みの問題 <span id="admin-total"></span></h3>
+      <div id="admin-q-list"></div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<script>
+// ============================================================
+// ★★★ 問題データ ★★★
+// type: "truefalse" → ○×式
+// type: "choice"    → 四肢択一式
+//
+// 【○×式】
+//   answer: true (正しい=○) / false (誤り=×)
+//
+// 【四肢択一式】
+//   options: ["選択肢A","選択肢B","選択肢C","選択肢D"]
+//   answer: 0～3 の数字（options配列の正解インデックス）
+//
+// explanation: 解説文（省略可）
+// ============================================================
+const QUESTIONS = [
+
+  // ★ ここに問題を追加してください ★
+  // （管理画面からも追加できます）
+
+]; // ← ここまでが問題データ。上に追加・編集してください。
+
+// ============================================================
+// アプリケーションロジック
+// ============================================================
+let activeFilter   = "すべて";
+let quizQuestions  = [];
+let currentIndex   = 0;
+let score          = 0;
+let answered       = false;
+let userAnswers    = [];
+
+// カテゴリ一覧生成
+function getCategories() {
+  const cats = [...new Set(QUESTIONS.map(q => q.category))];
+  return ["すべて", ...cats];
+}
+
+// スタート画面初期化
+function initStart() {
+  const filterRow = document.getElementById("filter-row");
+  filterRow.innerHTML = "";
+  getCategories().forEach(cat => {
+    const btn = document.createElement("button");
+    btn.className = "filter-btn" + (cat === activeFilter ? " active" : "");
+    btn.textContent = cat;
+    btn.onclick = () => {
+      activeFilter = cat;
+      document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      updateCount();
+    };
+    filterRow.appendChild(btn);
+  });
+  updateCount();
+}
+
+function updateCount() {
+  const filtered = activeFilter === "すべて"
+    ? QUESTIONS
+    : QUESTIONS.filter(q => q.category === activeFilter);
+  document.getElementById("question-count").textContent = filtered.length;
+}
+
+function showStart() {
+  document.getElementById("start-screen").style.display = "block";
+  document.getElementById("quiz-screen").style.display  = "none";
+  document.getElementById("result-screen").style.display = "none";
+  initStart();
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+function startQuiz() {
+  const filtered = activeFilter === "すべて"
+    ? QUESTIONS
+    : QUESTIONS.filter(q => q.category === activeFilter);
+
+  quizQuestions = shuffle(filtered);
+  currentIndex  = 0;
+  score         = 0;
+  userAnswers   = [];
+
+  document.getElementById("start-screen").style.display  = "none";
+  document.getElementById("result-screen").style.display = "none";
+  document.getElementById("quiz-screen").style.display   = "block";
+
+  renderQuestion();
+}
+
+function renderQuestion() {
+  answered = false;
+  const q   = quizQuestions[currentIndex];
+  const total = quizQuestions.length;
+
+  // プログレス
+  const pct = ((currentIndex) / total) * 100;
+  document.getElementById("progress-bar").style.width = pct + "%";
+  document.getElementById("progress-label").textContent =
+    `${currentIndex + 1} / ${total} 問`;
+
+  // バッジ・カテゴリ
+  const badge = document.getElementById("type-badge");
+  if (q.type === "truefalse") {
+    badge.textContent = "○×式";
+    badge.className   = "question-type-badge badge-truefalse";
+  } else {
+    badge.textContent = "四肢択一";
+    badge.className   = "question-type-badge badge-choice";
+  }
+
+  document.getElementById("q-category").textContent = q.category;
+  document.getElementById("q-text").textContent     = q.text;
+  const pageEl = document.getElementById("q-page");
+  pageEl.innerHTML = q.page ? `<span class="question-page">📖 テキスト p.${q.page}</span>` : "";
+
+  // フィードバック非表示
+  const fb = document.getElementById("feedback");
+  fb.style.display = "none";
+  fb.className     = "feedback";
+
+  document.getElementById("next-btn").style.display = "none";
+
+  // 選択肢生成
+  const wrap = document.getElementById("options-wrap");
+  wrap.innerHTML = "";
+
+  if (q.type === "truefalse") {
+    wrap.className = "options truefalse";
+    [{ label: "○", value: true }, { label: "×", value: false }].forEach(opt => {
+      const btn = document.createElement("button");
+      btn.className   = "option-btn";
+      btn.textContent = opt.label;
+      btn.dataset.val = opt.value;
+      btn.onclick = () => handleTrueFalse(btn, opt.value, q);
+      wrap.appendChild(btn);
+    });
+  } else {
+    wrap.className = "options";
+    q.options.forEach((text, idx) => {
+      const btn = document.createElement("button");
+      btn.className   = "option-btn";
+      btn.textContent = `${["①","②","③","④"][idx]}　${text}`;
+      btn.dataset.idx = idx;
+      btn.onclick = () => handleChoice(btn, idx, q);
+      wrap.appendChild(btn);
+    });
+  }
+}
+
+function handleTrueFalse(clickedBtn, selected, q) {
+  if (answered) return;
+  answered = true;
+  const correct = (selected === q.answer);
+  showFeedback(correct, q);
+  styleButtons(clickedBtn, null, correct, q);
+  userAnswers.push({ q, selected: selected ? "○" : "×", correct });
+  if (correct) score++;
+}
+
+function handleChoice(clickedBtn, idx, q) {
+  if (answered) return;
+  answered = true;
+  const correct = (idx === q.answer);
+  showFeedback(correct, q);
+  styleButtons(null, clickedBtn, correct, q);
+  userAnswers.push({ q, selected: q.options[idx], correct });
+  if (correct) score++;
+}
+
+function styleButtons(tfBtn, choiceBtn, correct, q) {
+  const allBtns = document.querySelectorAll(".option-btn");
+  allBtns.forEach(b => b.disabled = true);
+
+  if (tfBtn) {
+    // ○×式
+    tfBtn.classList.add(correct ? "correct" : "wrong");
+    // 正解ボタンも緑にする
+    if (!correct) {
+      allBtns.forEach(b => {
+        const val = b.dataset.val === "true";
+        if (val === q.answer) b.classList.add("reveal");
+      });
+    }
+  } else {
+    // 択一式
+    choiceBtn.classList.add(correct ? "correct" : "wrong");
+    if (!correct) {
+      allBtns.forEach(b => {
+        if (parseInt(b.dataset.idx) === q.answer) b.classList.add("reveal");
+      });
+    }
+  }
+}
+
+function showFeedback(correct, q) {
+  const fb    = document.getElementById("feedback");
+  const title = document.getElementById("feedback-title");
+  const exp   = document.getElementById("feedback-explanation");
+
+  fb.className  = "feedback " + (correct ? "correct" : "wrong");
+  title.textContent = correct ? "✔ 正解！" : "✘ 不正解";
+  exp.textContent   = q.explanation || "";
+  fb.style.display  = "block";
+
+  const nextBtn = document.getElementById("next-btn");
+  nextBtn.style.display = "block";
+  nextBtn.textContent =
+    currentIndex + 1 < quizQuestions.length ? "次の問題へ →" : "結果を見る";
+}
+
+function nextQuestion() {
+  currentIndex++;
+  if (currentIndex < quizQuestions.length) {
+    renderQuestion();
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  } else {
+    showResult();
+  }
+}
+
+function showResult() {
+  document.getElementById("quiz-screen").style.display   = "none";
+  document.getElementById("result-screen").style.display = "block";
+
+  const total = quizQuestions.length;
+  const pct   = Math.round((score / total) * 100);
+
+  document.getElementById("score-num").textContent  = score;
+  document.getElementById("score-denom").textContent = `/ ${total} 問`;
+  document.getElementById("r-correct").textContent  = score;
+  document.getElementById("r-wrong").textContent    = total - score;
+  document.getElementById("r-pct").textContent      = pct + "%";
+
+  const circle  = document.getElementById("result-circle");
+  const message = document.getElementById("rank-message");
+  const sub     = document.getElementById("rank-sub");
+
+  circle.className = "result-circle";
+  if (pct >= 90) {
+    circle.classList.add("rank-excellent");
+    message.textContent = "素晴らしい！";
+    sub.textContent     = "合格圏内です。自信を持って本番に臨みましょう！";
+  } else if (pct >= 70) {
+    circle.classList.add("rank-good");
+    message.textContent = "合格ライン！";
+    sub.textContent     = "あと少しで満点です。苦手な分野を復習しましょう。";
+  } else if (pct >= 50) {
+    circle.classList.add("rank-normal");
+    message.textContent = "もう少し！";
+    sub.textContent     = "基礎的な知識を整理してもう一度挑戦しましょう。";
+  } else {
+    circle.classList.add("rank-poor");
+    message.textContent = "要復習";
+    sub.textContent     = "各カテゴリの基礎から確認しましょう。";
+  }
+
+  // 振り返りリスト
+  const reviewList = document.getElementById("review-list");
+  reviewList.innerHTML = "";
+  userAnswers.forEach((ua, i) => {
+    const q   = ua.q;
+    const div = document.createElement("div");
+    div.className = "review-item " + (ua.correct ? "correct" : "wrong");
+
+    let correctLabel = "";
+    if (q.type === "truefalse") {
+      correctLabel = q.answer ? "○（正しい）" : "×（誤り）";
+    } else {
+      correctLabel = `${["①","②","③","④"][q.answer]}　${q.options[q.answer]}`;
+    }
+
+    div.innerHTML = `
+      <div class="ri-meta">Q${i+1} ／ ${q.category} ／ ${q.type === "truefalse" ? "○×式" : "四肢択一"}${q.page ? ` ／ <span style="color:#1a56a0;">p.${q.page}</span>` : ""}</div>
+      <div class="ri-q">${q.text}</div>
+      <div class="ri-ans">
+        <span class="ri-correct-ans">正解: ${correctLabel}</span>
+        ${!ua.correct ? `<br><span class="ri-your-ans">あなたの回答: ${ua.selected}</span>` : ""}
+      </div>
+      ${q.explanation ? `<div class="ri-explanation">${q.explanation}</div>` : ""}
+    `;
+    reviewList.appendChild(div);
+  });
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+// ============================================================
+// 管理画面ロジック
+// ・ユーザー追加問題 → localStorage "userQuestions"
+// ・削除した初期問題 → localStorage "deletedBaseIds"（インデックス配列）
+// ============================================================
+
+const LS_USER = "bilClean_userQuestions";
+const LS_DEL  = "bilClean_deletedBaseIds";
+
+function loadUserQuestions() {
+  try { return JSON.parse(localStorage.getItem(LS_USER) || "[]"); } catch(e) { return []; }
+}
+function loadDeletedBaseIds() {
+  try { return JSON.parse(localStorage.getItem(LS_DEL) || "[]"); } catch(e) { return []; }
+}
+function saveUserQuestions(arr) {
+  try { localStorage.setItem(LS_USER, JSON.stringify(arr)); } catch(e) {}
+}
+function saveDeletedBaseIds(arr) {
+  try { localStorage.setItem(LS_DEL, JSON.stringify(arr)); } catch(e) {}
+}
+
+// 有効な全問題（初期 - 削除済み + ユーザー追加）
+function getAllQuestions() {
+  const deleted = loadDeletedBaseIds();
+  const base    = QUESTIONS.filter((_, i) => !deleted.includes(i));
+  return [...base, ...loadUserQuestions()];
+}
+
+// ---- 管理画面を開く ----
+function showAdmin() {
+  document.getElementById("start-screen").style.display  = "none";
+  document.getElementById("quiz-screen").style.display   = "none";
+  document.getElementById("result-screen").style.display = "none";
+  document.getElementById("admin-screen").style.display  = "block";
+  renderAdminList();
+}
+
+// ---- フォーム：問題形式切り替え ----
+function onTypeChange() {
+  const type = document.getElementById("f-type").value;
+  document.getElementById("tf-answer-row").style.display = type === "truefalse" ? "" : "none";
+  const cf = document.getElementById("choice-fields");
+  cf.classList.toggle("visible", type === "choice");
+}
+
+// ---- 問題を追加 ----
+function addQuestion() {
+  const category    = document.getElementById("f-category").value;
+  const type        = document.getElementById("f-type").value;
+  const text        = document.getElementById("f-text").value.trim();
+  const page        = document.getElementById("f-page").value.trim();
+  const explanation = document.getElementById("f-explanation").value.trim();
+
+  if (!text) { alert("問題文を入力してください。"); return; }
+
+  let newQ = { category, type, text, page, explanation };
+
+  if (type === "truefalse") {
+    const val = document.querySelector('input[name="tf-ans"]:checked').value;
+    newQ.answer = (val === "true");
+  } else {
+    const opts = [
+      document.getElementById("f-opt0").value.trim(),
+      document.getElementById("f-opt1").value.trim(),
+      document.getElementById("f-opt2").value.trim(),
+      document.getElementById("f-opt3").value.trim(),
+    ];
+    if (opts.some(o => !o)) { alert("選択肢①〜④をすべて入力してください。"); return; }
+    const ans = parseInt(document.querySelector('input[name="ch-ans"]:checked').value);
+    newQ.options = opts;
+    newQ.answer  = ans;
+  }
+
+  const arr = loadUserQuestions();
+  arr.push(newQ);
+  saveUserQuestions(arr);
+
+  // フォームリセット
+  document.getElementById("f-text").value = "";
+  document.getElementById("f-page").value = "";
+  document.getElementById("f-explanation").value = "";
+  ["f-opt0","f-opt1","f-opt2","f-opt3"].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.value = "";
+  });
+
+  renderAdminList();
+  alert("問題を追加しました！");
+}
+
+// ---- 問題を削除 ----
+function deleteBaseQuestion(baseIndex) {
+  if (!confirm("この問題を削除しますか？")) return;
+  const arr = loadDeletedBaseIds();
+  if (!arr.includes(baseIndex)) arr.push(baseIndex);
+  saveDeletedBaseIds(arr);
+  renderAdminList();
+}
+
+function deleteUserQuestion(userIndex) {
+  if (!confirm("この問題を削除しますか？")) return;
+  const arr = loadUserQuestions();
+  arr.splice(userIndex, 1);
+  saveUserQuestions(arr);
+  renderAdminList();
+}
+
+// ---- 問題一覧を描画 ----
+function renderAdminList() {
+  const deleted  = loadDeletedBaseIds();
+  const userQs   = loadUserQuestions();
+  const listEl   = document.getElementById("admin-q-list");
+  const totalEl  = document.getElementById("admin-total");
+  const total    = (QUESTIONS.length - deleted.length) + userQs.length;
+  totalEl.textContent = `全 ${total} 問`;
+  listEl.innerHTML = "";
+
+  // 初期問題
+  QUESTIONS.forEach((q, i) => {
+    const isDel = deleted.includes(i);
+    const div   = document.createElement("div");
+    div.className = "admin-q-item";
+    div.style.opacity = isDel ? "0.35" : "1";
+    div.innerHTML = `
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-def">初期</span>
+          <span class="admin-q-badge ${q.type === "truefalse" ? "abadge-tf" : "abadge-ch"}">${q.type === "truefalse" ? "○×" : "択一"}</span>
+          ${q.category}${q.page ? ` ／ p.${q.page}` : ""}
+        </div>
+        <div class="admin-q-text">${q.text}</div>
+      </div>
+      ${isDel
+        ? `<button class="del-btn" style="border-color:#22a35b;color:#22a35b;" onclick="restoreBaseQuestion(${i})">復元</button>`
+        : `<button class="del-btn" onclick="deleteBaseQuestion(${i})">削除</button>`
+      }
+    `;
+    listEl.appendChild(div);
+  });
+
+  // ユーザー追加問題
+  userQs.forEach((q, i) => {
+    const div = document.createElement("div");
+    div.className = "admin-q-item";
+    div.innerHTML = `
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge ${q.type === "truefalse" ? "abadge-tf" : "abadge-ch"}">${q.type === "truefalse" ? "○×" : "択一"}</span>
+          ${q.category}${q.page ? ` ／ p.${q.page}` : ""}
+        </div>
+        <div class="admin-q-text">${q.text}</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(${i})">削除</button>
+    `;
+    listEl.appendChild(div);
+  });
+}
+
+// ---- 削除した初期問題を復元 ----
+function restoreBaseQuestion(baseIndex) {
+  const arr = loadDeletedBaseIds().filter(i => i !== baseIndex);
+  saveDeletedBaseIds(arr);
+  renderAdminList();
+}
+
+// showStart をオーバーライドして管理画面も非表示に
+const _origShowStart = showStart;
+showStart = function() {
+  _origShowStart();
+  document.getElementById("admin-screen").style.display = "none";
+};
+
+// getCategories / updateCount / startQuiz を getAllQuestions ベースに差し替え
+getCategories = function() {
+  const cats = [...new Set(getAllQuestions().map(q => q.category))];
+  return ["すべて", ...cats];
+};
+
+updateCount = function() {
+  const filtered = activeFilter === "すべて"
+    ? getAllQuestions()
+    : getAllQuestions().filter(q => q.category === activeFilter);
+  document.getElementById("question-count").textContent = filtered.length;
+};
+
+startQuiz = function() {
+  const all = getAllQuestions();
+  const filtered = activeFilter === "すべて"
+    ? all
+    : all.filter(q => q.category === activeFilter);
+
+  quizQuestions = shuffle(filtered);
+  currentIndex  = 0;
+  score         = 0;
+  userAnswers   = [];
+
+  document.getElementById("start-screen").style.display  = "none";
+  document.getElementById("result-screen").style.display = "none";
+  document.getElementById("admin-screen").style.display  = "none";
+  document.getElementById("quiz-screen").style.display   = "block";
+
+  renderQuestion();
+};
+
+// ============================================================
+// エクスポート / インポート
+// ============================================================
+
+function exportQuestions() {
+  const userQs = loadUserQuestions();
+  if (userQs.length === 0) {
+    alert("エクスポートできる追加問題がありません。\n先に問題を追加してください。");
+    return;
+  }
+  const json = JSON.stringify(userQs, null, 2);
+  const blob = new Blob([json], { type: "application/json" });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement("a");
+  a.href     = url;
+  a.download = "ビルクリーニング_追加問題.json";
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function importQuestions(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    try {
+      const imported = JSON.parse(e.target.result);
+      if (!Array.isArray(imported)) throw new Error("形式が正しくありません");
+
+      // 必須フィールドチェック
+      const valid = imported.every(q =>
+        q.category && q.type && q.text !== undefined && q.answer !== undefined
+      );
+      if (!valid) throw new Error("問題データに必須項目が不足しています");
+
+      const existing = loadUserQuestions();
+
+      // 重複チェック（問題文が同じものはスキップ）
+      const existingTexts = new Set(existing.map(q => q.text));
+      const newQs = imported.filter(q => !existingTexts.has(q.text));
+      const skipped = imported.length - newQs.length;
+
+      const merged = [...existing, ...newQs];
+      saveUserQuestions(merged);
+      renderAdminList();
+
+      let msg = `${newQs.length} 問をインポートしました。`;
+      if (skipped > 0) msg += `\n（${skipped} 問は重複のためスキップしました）`;
+      alert(msg);
+    } catch (err) {
+      alert("読み込みに失敗しました。\n正しいJSONファイルか確認してください。\n\nエラー: " + err.message);
+    }
+    // ファイル入力をリセット（同じファイルを再度選択できるよう）
+    event.target.value = "";
+  };
+  reader.readAsText(file, "utf-8");
+}
+
+// 組み込みブラウザ（Slack・LINE等）の検出
+(function() {
+  const ua = navigator.userAgent;
+  const isInApp = /SlackWebApp|Line\/|FBAN|FBAV|Instagram|MicroMessenger/.test(ua)
+    || (!!window.webkit && !navigator.standalone && /iPhone|iPad/.test(ua) && !/Safari\//.test(ua));
+  if (isInApp) {
+    document.getElementById("inapp-banner").style.display = "block";
+  }
+})();
+
+// 初期化
+showStart();
+</script>
+</body>
+</html>
