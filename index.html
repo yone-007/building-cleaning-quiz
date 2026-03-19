@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
+<html lang="ja"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ビルクリーニング技能士1級 学科対策</title>
@@ -619,17 +618,17 @@
 <div class="container">
 
   <!-- ===== スタート画面 ===== -->
-  <div id="start-screen">
+  <div id="start-screen" style="display: none;">
     <h2>出題範囲を選択</h2>
     <p>カテゴリを選んでスタートしてください。<br>「すべて」を選ぶと全カテゴリから出題されます。</p>
-    <div class="filter-row" id="filter-row"></div>
-    <p style="font-size:0.82rem;color:#888;margin-bottom:16px;">問題数: <span id="question-count">--</span> 問</p>
+    <div class="filter-row" id="filter-row"><button class="filter-btn active">すべて</button><button class="filter-btn">第1編 建築物と環境衛生</button><button class="filter-btn">第2編 建築物の構造および設備</button><button class="filter-btn">第3編 建築物の内外装材の種類および性質</button><button class="filter-btn">第4編 材料</button><button class="filter-btn">第5編 電気、清掃機械と器具の種類、構造および使用法</button></div>
+    <p style="font-size:0.82rem;color:#888;margin-bottom:16px;">問題数: <span id="question-count">16</span> 問</p>
     <button class="start-btn" onclick="startQuiz()">スタート</button>
     <button class="admin-open-btn" onclick="showAdmin()">⚙ 問題を追加・削除する</button>
   </div>
 
   <!-- ===== 問題画面 ===== -->
-  <div id="quiz-screen">
+  <div id="quiz-screen" style="display: none;">
     <div class="progress-bar-wrap">
       <div class="progress-bar-fill" id="progress-bar"></div>
     </div>
@@ -651,7 +650,7 @@
   </div>
 
   <!-- ===== 結果画面 ===== -->
-  <div id="result-screen">
+  <div id="result-screen" style="display: none;">
     <div class="result-card">
       <h2 style="font-size:1.3rem;">結果発表</h2>
       <div class="result-score-wrap">
@@ -660,7 +659,7 @@
           <div class="score-denom" id="score-denom"></div>
         </div>
         <div class="rank-message" id="rank-message"></div>
-        <div class="rank-sub"     id="rank-sub"></div>
+        <div class="rank-sub" id="rank-sub"></div>
       </div>
       <div class="result-detail">
         <div class="detail-box correct-box">
@@ -677,7 +676,7 @@
         </div>
       </div>
       <div class="result-actions">
-        <button class="action-btn primary"   onclick="startQuiz()">もう一度挑戦</button>
+        <button class="action-btn primary" onclick="startQuiz()">もう一度挑戦</button>
         <button class="action-btn secondary" onclick="showStart()">トップに戻る</button>
       </div>
     </div>
@@ -689,20 +688,29 @@
   </div>
 
   <!-- ===== 管理画面 ===== -->
-  <div id="admin-screen">
+  <div id="admin-screen" style="display: block;">
     <div class="admin-header">
       <h2>問題の追加・削除</h2>
       <button class="admin-link-btn" onclick="showStart()">← トップに戻る</button>
     </div>
 
-    <!-- エクスポート / インポート -->
+    <!-- GitHub反映用HTMLエクスポート -->
     <div class="share-card">
-      <h3>問題を共有する</h3>
-      <p>「エクスポート」で自分が追加した問題をJSONファイルとして保存できます。<br>そのファイルを他の人に渡し、「インポート」で読み込むと同じ問題を使えます。</p>
+      <h3>全員に反映する（GitHub用）</h3>
+      <p>現在の全問題を埋め込んだHTMLファイルを書き出します。<br>ダウンロードしたファイルをGitHubにアップロードすると、全員に即反映されます。</p>
       <div class="share-btns">
-        <button class="export-btn" onclick="exportQuestions()">⬇ エクスポート（JSONダウンロード）</button>
+        <button class="export-btn" onclick="exportAsHTML()">⬇ GitHub用HTMLを書き出す</button>
+      </div>
+    </div>
+
+    <!-- JSON エクスポート / インポート -->
+    <div class="share-card">
+      <h3>問題をJSON形式で共有する</h3>
+      <p>追加した問題だけをJSONファイルで渡し、相手にインポートしてもらう方法です。</p>
+      <div class="share-btns">
+        <button class="export-btn" onclick="exportQuestions()">⬇ JSONエクスポート</button>
         <label class="import-btn">
-          ⬆ インポート（JSONを読み込む）
+          ⬆ JSONインポート
           <input type="file" id="import-file" accept=".json" style="display:none;" onchange="importQuestions(event)">
         </label>
       </div>
@@ -747,7 +755,7 @@
       <div class="form-row" id="tf-answer-row">
         <label>正解</label>
         <div class="answer-radios">
-          <label><input type="radio" name="tf-ans" value="true" checked> ○（正しい）</label>
+          <label><input type="radio" name="tf-ans" value="true" checked=""> ○（正しい）</label>
           <label><input type="radio" name="tf-ans" value="false"> ×（誤り）</label>
         </div>
       </div>
@@ -773,7 +781,7 @@
         <div class="form-row">
           <label>正解の番号</label>
           <div class="answer-radios">
-            <label><input type="radio" name="ch-ans" value="0" checked> ①</label>
+            <label><input type="radio" name="ch-ans" value="0" checked=""> ①</label>
             <label><input type="radio" name="ch-ans" value="1"> ②</label>
             <label><input type="radio" name="ch-ans" value="2"> ③</label>
             <label><input type="radio" name="ch-ans" value="3"> ④</label>
@@ -796,8 +804,168 @@
 
     <!-- 問題一覧 -->
     <div class="admin-list-card">
-      <h3>登録済みの問題 <span id="admin-total"></span></h3>
-      <div id="admin-q-list"></div>
+      <h3>登録済みの問題 <span id="admin-total">全 16 問</span></h3>
+      <div id="admin-q-list"><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第1編 建築物と環境衛生 ／ p.1
+        </div>
+        <div class="admin-q-text">建築物清掃は、環境上の異物を除去することによって建築物内外の清潔を維持することにある。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(0)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第1編 建築物と環境衛生 ／ p.2
+        </div>
+        <div class="admin-q-text">1.0㎛以下のほこりを吸入すると、深く肺胞まで侵入する。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(1)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第1編 建築物と環境衛生 ／ p.3
+        </div>
+        <div class="admin-q-text">建築物内における空気中細菌数は、一般に粉じん量に反比例しているといわれている。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(2)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第1編 建築物と環境衛生 ／ p.4
+        </div>
+        <div class="admin-q-text">見た目に清潔できれいであれば、衛生的であると言える。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(3)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第1編 建築物と環境衛生 ／ p.5
+        </div>
+        <div class="admin-q-text">ビルクリーニングは、快適な生活空間を提供し、より質の高い生産活動を生み出す。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(4)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第2編 建築物の構造および設備 ／ p.31
+        </div>
+        <div class="admin-q-text">建設計画で維持管理を考慮することは、ライフサイクルコストに大きな影響がある。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(5)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第2編 建築物の構造および設備 ／ p.35
+        </div>
+        <div class="admin-q-text">建築物の構造法で一体式構造は、梁・柱などの細長い材料を組み合わせて骨組みを構成する。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(6)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第2編 建築物の構造および設備 ／ p.39
+        </div>
+        <div class="admin-q-text">鉄筋コンクリート造において、コンクリートの中性化が構造体の寿命に影響することはない。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(7)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第3編 建築物の内外装材の種類および性質 ／ p.68
+        </div>
+        <div class="admin-q-text">バインダー含有率30％未満のものは、コンポジションビニル床タイルに分類される。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(8)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第3編 建築物の内外装材の種類および性質 ／ p.68
+        </div>
+        <div class="admin-q-text">ビニル系床シートは、単層、複層、発泡複層ビニル床シートのみに分類される。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(9)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第4編 材料 ／ p.92
+        </div>
+        <div class="admin-q-text">洗剤としての必要条件の1つとして、乳化・分散性のあることが挙げられる。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(10)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第4編 材料 ／ p.93
+        </div>
+        <div class="admin-q-text">㏗値が1変化すると水素イオン濃度が10倍あるいは10分の1変化することになる。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(11)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          第5編 電気、清掃機械と器具の種類、構造および使用法 ／ p.118
+        </div>
+        <div class="admin-q-text">電力量（Ｗｈ）は電圧（Ｖ）×電流（Ａ）で表される。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(12)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          第1編 建築物と環境衛生 ／ p.1
+        </div>
+        <div class="admin-q-text">建築物清掃の除去対象物として不適切なものは次のうちどれか。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(13)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          第2編 建築物の構造および設備 ／ p.32
+        </div>
+        <div class="admin-q-text">建築物衛生法で特定建築物に指定している用途の建築物は次のうちどれか。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(14)">削除</button>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          第2編 建築物の構造および設備 ／ p.33
+        </div>
+        <div class="admin-q-text">建築物の構成のうち構造部材として適切なものはどれか。</div>
+      </div>
+      <button class="del-btn" onclick="deleteUserQuestion(15)">削除</button>
+    </div></div>
     </div>
   </div>
 
@@ -819,10 +987,22 @@
 // explanation: 解説文（省略可）
 // ============================================================
 const QUESTIONS = [
-
-  // ★ ここに問題を追加してください ★
-  // （管理画面からも追加できます）
-
+  {"category":"第1編 建築物と環境衛生","type":"truefalse","text":"建築物清掃は、環境上の異物を除去することによって建築物内外の清潔を維持することにある。","page":"1","explanation":"","answer":true},
+  {"category":"第1編 建築物と環境衛生","type":"truefalse","text":"1.0㎛以下のほこりを吸入すると、深く肺胞まで侵入する。","page":"2","explanation":"","answer":true},
+  {"category":"第1編 建築物と環境衛生","type":"truefalse","text":"建築物内における空気中細菌数は、一般に粉じん量に反比例しているといわれている。","page":"3","explanation":"建築物内における空気中細菌数は、一般に粉じん量に比例しているといわれている。","answer":false},
+  {"category":"第1編 建築物と環境衛生","type":"truefalse","text":"見た目に清潔できれいであれば、衛生的であると言える。","page":"4","explanation":"見た目に清潔であっても、必ずしも衛生的であるとは言えない。","answer":false},
+  {"category":"第1編 建築物と環境衛生","type":"truefalse","text":"ビルクリーニングは、快適な生活空間を提供し、より質の高い生産活動を生み出す。","page":"5","explanation":"","answer":true},
+  {"category":"第2編 建築物の構造および設備","type":"truefalse","text":"建設計画で維持管理を考慮することは、ライフサイクルコストに大きな影響がある。","page":"31","explanation":"","answer":true},
+  {"category":"第2編 建築物の構造および設備","type":"truefalse","text":"建築物の構造法で一体式構造は、梁・柱などの細長い材料を組み合わせて骨組みを構成する。","page":"35","explanation":"一体式構造は、梁・柱などが連続し継ぎ目のない構造である。","answer":false},
+  {"category":"第2編 建築物の構造および設備","type":"truefalse","text":"鉄筋コンクリート造において、コンクリートの中性化が構造体の寿命に影響することはない。","page":"39","explanation":"鉄筋コンクリート造において、コンクリートの中性化は構造体の寿命に大きく影響する。","answer":false},
+  {"category":"第3編 建築物の内外装材の種類および性質","type":"truefalse","text":"バインダー含有率30％未満のものは、コンポジションビニル床タイルに分類される。","page":"68","explanation":"バインダー含有率30％以上のものは、単層ビニル床タイルもしくは複層ビニル床タイルに分類される。","answer":true},
+  {"category":"第3編 建築物の内外装材の種類および性質","type":"truefalse","text":"ビニル系床シートは、単層、複層、発泡複層ビニル床シートのみに分類される。","page":"68","explanation":"ビニル系床シートは、単層、複層、発泡複層ビニル床シートに加えて、クッションフロアも含まれる。","answer":false},
+  {"category":"第4編 材料","type":"truefalse","text":"洗剤としての必要条件の1つとして、乳化・分散性のあることが挙げられる。","page":"92","explanation":"","answer":true},
+  {"category":"第4編 材料","type":"truefalse","text":"㏗値が1変化すると水素イオン濃度が10倍あるいは10分の1変化することになる。","page":"93","explanation":"","answer":true},
+  {"category":"第5編 電気、清掃機械と器具の種類、構造および使用法","type":"truefalse","text":"電力量（Ｗｈ）は電圧（Ｖ）×電流（Ａ）で表される。","page":"118","explanation":"電力量（Ｗｈ）＝電力(Ｗ)×時間(ｈ)","answer":false},
+  {"category":"第1編 建築物と環境衛生","type":"choice","text":"建築物清掃の除去対象物として不適切なものは次のうちどれか。","page":"1","explanation":"二酸化炭素は清掃では除去出来ない。","options":["堆積じん","ダニの死骸","二酸化炭素","化学繊維粉"],"answer":2},
+  {"category":"第2編 建築物の構造および設備","type":"choice","text":"建築物衛生法で特定建築物に指定している用途の建築物は次のうちどれか。","page":"32","explanation":"百貨店以外は特定建築物の用途に指定されていない","options":["共同住宅","工場","百貨店","病院"],"answer":2},
+  {"category":"第2編 建築物の構造および設備","type":"choice","text":"建築物の構成のうち構造部材として適切なものはどれか。","page":"33","explanation":"梁以外は非構造部材である。","options":["間仕切り壁","建具","ぞうさく","梁"],"answer":3}
 ]; // ← ここまでが問題データ。上に追加・編集してください。
 
 // ============================================================
@@ -1307,6 +1487,38 @@ startQuiz = function() {
 // エクスポート / インポート
 // ============================================================
 
+function exportAsHTML() {
+  const allQs = getAllQuestions();
+  if (allQs.length === 0) {
+    alert("問題が0問です。先に問題を追加してください。");
+    return;
+  }
+
+  let html = '<!DOCTYPE html>\n' + document.documentElement.outerHTML;
+
+  const questionsJson = allQs.map(q => '  ' + JSON.stringify(q)).join(',\n');
+  const newBlock = `const QUESTIONS = [\n${questionsJson}\n]; // ← ここまでが問題データ。上に追加・編集してください。`;
+
+  const replaced = html.replace(
+    /const QUESTIONS = \[[\s\S]*?\]; \/\/ ← ここまでが問題データ。上に追加・編集してください。/,
+    newBlock
+  );
+
+  if (replaced === html) {
+    alert("書き出しに失敗しました。ページを再読み込みしてからお試しください。");
+    return;
+  }
+
+  const blob = new Blob([replaced], { type: 'text/html;charset=utf-8' });
+  const url  = URL.createObjectURL(blob);
+  const a    = document.createElement('a');
+  a.href     = url;
+  a.download = 'ビルクリーニング技能士_学科対策.html';
+  a.click();
+  URL.revokeObjectURL(url);
+  alert(`${allQs.length}問を埋め込んだHTMLを書き出しました。\nGitHubにアップロードしてください。`);
+}
+
 function exportQuestions() {
   const userQs = loadUserQuestions();
   if (userQs.length === 0) {
@@ -1375,5 +1587,6 @@ function importQuestions(event) {
 // 初期化
 showStart();
 </script>
-</body>
-</html>
+
+
+</body></html>
