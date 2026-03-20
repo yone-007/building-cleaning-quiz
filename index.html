@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
+<html lang="ja"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ビルクリーニング技能士1級 学科対策</title>
@@ -670,21 +669,21 @@
 <div class="container">
 
   <!-- ===== スタート画面 ===== -->
-  <div id="start-screen">
+  <div id="start-screen" style="display: none;">
     <h2>出題範囲を選択</h2>
     <p>カテゴリを選んでスタートしてください。<br>「すべて」を選ぶと全カテゴリから出題されます。</p>
-    <div class="filter-row" id="filter-row"></div>
+    <div class="filter-row" id="filter-row"><button class="filter-btn active">すべて</button><button class="filter-btn">1編</button><button class="filter-btn">2編</button><button class="filter-btn">3編</button><button class="filter-btn">4編</button><button class="filter-btn">5編</button><button class="filter-btn">6編</button><button class="filter-btn">7編</button><button class="filter-btn">8編</button><button class="filter-btn">9編</button><button class="filter-btn">10編</button><button class="filter-btn">11編</button><button class="filter-btn">12編</button></div>
 
     <p style="font-size:0.85rem;font-weight:700;color:#444;margin-bottom:10px;">出題数を選択</p>
-    <div class="filter-row" id="count-row"></div>
+    <div class="filter-row" id="count-row"><button class="filter-btn active">10問</button><button class="filter-btn">20問</button><button class="filter-btn">30問</button><button class="filter-btn">すべて</button></div>
 
-    <p style="font-size:0.82rem;color:#888;margin-bottom:16px;">問題数: <span id="question-count">--</span> 問</p>
+    <p style="font-size:0.82rem;color:#888;margin-bottom:16px;">問題数: <span id="question-count">199</span> 問</p>
     <button class="start-btn" onclick="startQuiz()">スタート</button>
     <button class="admin-open-btn" onclick="showAdmin()">⚙ 問題を追加・削除する</button>
   </div>
 
   <!-- ===== 問題画面 ===== -->
-  <div id="quiz-screen">
+  <div id="quiz-screen" style="display: none;">
     <div class="progress-bar-wrap">
       <div class="progress-bar-fill" id="progress-bar"></div>
     </div>
@@ -706,7 +705,7 @@
   </div>
 
   <!-- ===== 結果画面 ===== -->
-  <div id="result-screen">
+  <div id="result-screen" style="display: none;">
     <div class="result-card">
       <h2 style="font-size:1.3rem;">結果発表</h2>
       <div class="result-score-wrap">
@@ -715,7 +714,7 @@
           <div class="score-denom" id="score-denom"></div>
         </div>
         <div class="rank-message" id="rank-message"></div>
-        <div class="rank-sub"     id="rank-sub"></div>
+        <div class="rank-sub" id="rank-sub"></div>
       </div>
       <div class="result-detail">
         <div class="detail-box correct-box">
@@ -732,7 +731,7 @@
         </div>
       </div>
       <div class="result-actions">
-        <button class="action-btn primary"   onclick="startQuiz()">もう一度挑戦</button>
+        <button class="action-btn primary" onclick="startQuiz()">もう一度挑戦</button>
         <button class="action-btn secondary" onclick="showStart()">トップに戻る</button>
       </div>
     </div>
@@ -744,7 +743,7 @@
   </div>
 
   <!-- ===== 管理画面 ===== -->
-  <div id="admin-screen">
+  <div id="admin-screen" style="display: block;">
     <div class="admin-header">
       <h2>問題の追加・削除</h2>
       <button class="admin-link-btn" onclick="showStart()">← トップに戻る</button>
@@ -827,7 +826,7 @@
       <div class="form-row" id="tf-answer-row">
         <label>正解</label>
         <div class="answer-radios">
-          <label><input type="radio" name="tf-ans" value="true" checked> ○（正しい）</label>
+          <label><input type="radio" name="tf-ans" value="true" checked=""> ○（正しい）</label>
           <label><input type="radio" name="tf-ans" value="false"> ×（誤り）</label>
         </div>
       </div>
@@ -853,7 +852,7 @@
         <div class="form-row">
           <label>正解</label>
           <div class="answer-radios">
-            <label><input type="radio" name="ch-ans" value="0" checked> ア</label>
+            <label><input type="radio" name="ch-ans" value="0" checked=""> ア</label>
             <label><input type="radio" name="ch-ans" value="1"> イ</label>
             <label><input type="radio" name="ch-ans" value="2"> ウ</label>
             <label><input type="radio" name="ch-ans" value="3"> エ</label>
@@ -876,8 +875,2595 @@
 
     <!-- 問題一覧 -->
     <div class="admin-list-card">
-      <h3>登録済みの問題 <span id="admin-total"></span></h3>
-      <div id="admin-q-list"></div>
+      <h3>登録済みの問題 <span id="admin-total">全 199 問</span></h3>
+      <div id="admin-q-list"><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          1編 ／ p.1
+        </div>
+        <div class="admin-q-text">建築物清掃は、環境上の異物を除去することによって建築物内外の清潔を維持することにある。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(0)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(0)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          1編 ／ p.2
+        </div>
+        <div class="admin-q-text">1.0?以下のほこりを吸入すると、深く肺胞まで侵入する。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(1)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(1)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          1編 ／ p.3
+        </div>
+        <div class="admin-q-text">建築物内における空気中細菌数は、一般に粉じん量に反比例しているといわれている。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(2)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(2)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          1編 ／ p.4
+        </div>
+        <div class="admin-q-text">見た目に清潔できれいであれば、衛生的であると言える。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(3)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(3)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          1編 ／ p.5
+        </div>
+        <div class="admin-q-text">ビルクリーニングは、快適な生活空間を提供し、より質の高い生産活動を生み出す。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(4)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(4)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          1編 ／ p.14
+        </div>
+        <div class="admin-q-text">建築物衛生法の管理基準は、最低基準を定めている。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(5)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(5)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          1編 ／ p.22
+        </div>
+        <div class="admin-q-text">ビルクリーニングにおいて、細菌等目に見えない汚染物質は作業対象外である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(6)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(6)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          1編 ／ p.24
+        </div>
+        <div class="admin-q-text">ノロウイルス罹患患者の嘔吐物処理には、次亜塩素酸ナトリウムで消毒するのが有効である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(7)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(7)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          2編 ／ p.31
+        </div>
+        <div class="admin-q-text">建設計画で維持管理を考慮することは、ライフサイクルコストに大きな影響がある。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(8)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(8)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          2編 ／ p.35
+        </div>
+        <div class="admin-q-text">建築物の構造法で一体式構造は、梁・柱などの細長い材料を組み合わせて骨組みを構成する。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(9)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(9)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          2編 ／ p.39
+        </div>
+        <div class="admin-q-text">鉄筋コンクリート造において、コンクリートの中性化が構造体の寿命に影響することはない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(10)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(10)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          2編 ／ p.50
+        </div>
+        <div class="admin-q-text">排水トラップが破封すると、排水管から悪臭を発することがある。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(11)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(11)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          2編 ／ p.52
+        </div>
+        <div class="admin-q-text">浄化槽に流入した汚物は浄化され、河川などの公共用水域に放流される。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(12)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(12)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          2編 ／ p.53
+        </div>
+        <div class="admin-q-text">建築物内のコンセントの電圧は一般的に100Ｖであるが、200Ｖの場合もある。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(13)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(13)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          2編 ／ p.61
+        </div>
+        <div class="admin-q-text">ビルクリーニングの立場からみた便所の特徴は小スペースのため、対象建材の種類も少ない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(14)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(14)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          2編 ／ p.62
+        </div>
+        <div class="admin-q-text">エレベータ、エスカレータ設備の維持管理においては、なにより美観向上が大切である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(15)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(15)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          3編 ／ p.68
+        </div>
+        <div class="admin-q-text">バインダー含有率30％未満のものは、コンポジションビニル床タイルに分類される。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(16)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(16)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          3編 ／ p.68
+        </div>
+        <div class="admin-q-text">ビニル系床シートは、単層、複層、発泡複層ビニル床シートのみに分類される。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(17)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(17)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          3編 ／ p.69
+        </div>
+        <div class="admin-q-text">リノリウムは剥離剤では変色しない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(18)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(18)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          3編 ／ p.69
+        </div>
+        <div class="admin-q-text">ゴム系タイルは油類に耐性がある。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(19)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(19)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          3編 ／ p.70
+        </div>
+        <div class="admin-q-text">石材は鏡面状に仕上げられていても、細かい孔があるために汚れが入りやすい。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(20)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(20)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          3編 ／ p.73
+        </div>
+        <div class="admin-q-text">木質系床材は、表面塗装の有無でメンテナンス性がかなり異なる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(21)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(21)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          3編 ／ p.77
+        </div>
+        <div class="admin-q-text">タフテッドカーペットで使用されているラテックスゴムは水の影響は受けない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(22)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(22)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          3編 ／ p.83
+        </div>
+        <div class="admin-q-text">天井仕上げ材料としては、軟質繊維板やロックウール吸音板がある。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(23)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(23)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          3編 ／ p.87
+        </div>
+        <div class="admin-q-text">ステンレススチールは、もらい錆を受けない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(24)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(24)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          3編 ／ p.89
+        </div>
+        <div class="admin-q-text">ガラスは酸性の洗剤によってヤケと呼ばれる変色が生じる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(25)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(25)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          4編 ／ p.92
+        </div>
+        <div class="admin-q-text">洗剤としての必要条件の1つとして、乳化・分散性のあることが挙げられる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(26)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(26)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          4編 ／ p.93
+        </div>
+        <div class="admin-q-text">?値が1変化すると水素イオン濃度が10倍あるいは10分の1変化することになる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(27)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(27)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          4編 ／ p.94
+        </div>
+        <div class="admin-q-text">剥離剤の液性は一般的に?値が6未満である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(28)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(28)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          4編 ／ p.95
+        </div>
+        <div class="admin-q-text">洗剤の主成分である界面活性剤は水の表面張力を高めるために使用されている。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(29)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(29)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          4編 ／ p.96
+        </div>
+        <div class="admin-q-text">界面活性剤の分子は親水基と親油基からなっている。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(30)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(30)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          4編 ／ p.99
+        </div>
+        <div class="admin-q-text">洗剤の濃度はその濃さに比例し、効果が増す。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(31)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(31)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          4編 ／ p.105
+        </div>
+        <div class="admin-q-text">フロアーポリッシュを床に塗布すると、その皮膜を除去することができなくなる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(32)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(32)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          4編 ／ p.107
+        </div>
+        <div class="admin-q-text">多くの水性フロアーポリッシュポリマータイプは皮膜の形成に金属架橋を利用している。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(33)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(33)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          4編 ／ p.116
+        </div>
+        <div class="admin-q-text">アルカリ電解水は環境に対する影響が大きいとされているため、使用されなくなった。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(34)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(34)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.118
+        </div>
+        <div class="admin-q-text">電力量（Ｗｈ）は電圧（Ｖ）×電流（Ａ）で表される。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(35)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(35)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.118
+        </div>
+        <div class="admin-q-text">定格とは、その電気機械器具に保障されている使用限度をいう。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(36)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(36)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.119
+        </div>
+        <div class="admin-q-text">電力会社から一般家庭やビル・工場などに動力として来ている電気は直流である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(37)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(37)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.121
+        </div>
+        <div class="admin-q-text">最大電流が15Aの標準的なコンセントにおいて、100Vの場合2.0ｋWまでなら使用することができる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(38)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(38)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.126
+        </div>
+        <div class="admin-q-text">小型のカーペットスイーパーは、たたみやその他の床の掃き掃除にも使われる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(39)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(39)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.129
+        </div>
+        <div class="admin-q-text">真空掃除機のフィルターの目にほこりが多量に付着すると、モーターの負荷が重くなり、過熱し故障の原因になる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(40)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(40)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.131
+        </div>
+        <div class="admin-q-text">真空掃除機は、ノズルを床面にぴったりと密着させて使用すると、吸い込みが良くなる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(41)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(41)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.138
+        </div>
+        <div class="admin-q-text">ポリッシャーの操作中に異常音が発生する原因のひとつには、モーター内部の入水によるものがある。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(42)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(42)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.140
+        </div>
+        <div class="admin-q-text">バフ用パッドの繊維素材は、摩擦や耐熱性・耐久性に富み、復元力のあるナイロン繊維が主に使用されている。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(43)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(43)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.141
+        </div>
+        <div class="admin-q-text">ドライフォーム方式とは、洗浄液を直接カーペットに噴射後直ちに吸引回収する方式である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(44)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(44)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.142
+        </div>
+        <div class="admin-q-text">スチーム方式カーペット洗浄機は、高温・高圧のスチームを噴射するので、汚れの分解が容易である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(45)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(45)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          5編 ／ p.152
+        </div>
+        <div class="admin-q-text">光沢度計は光の反射率で測定部の汚れや凹凸の状態を評価する測定器である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(46)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(46)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.158
+        </div>
+        <div class="admin-q-text">有機質の汚れ物質は植物性、動物性、化学性の３つに大別される。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(47)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(47)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.158
+        </div>
+        <div class="admin-q-text">ビルの汚れ物質のなかには疎水性のものもあるが、その大部分は水溶性物質である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(48)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(48)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.159
+        </div>
+        <div class="admin-q-text">油溶性のしみでウェットタイプのものは、付着後の乾燥が早いから固着化する特徴がある。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(49)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(49)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.159
+        </div>
+        <div class="admin-q-text">一般にプラスチック系の建材は油脂性の汚れが蓄積しやすい。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(50)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(50)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.161
+        </div>
+        <div class="admin-q-text">ビル内のほこりは、外部から侵入する土ぼこりより、内部で発生する綿ぼこりの方が圧倒的に多い。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(51)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(51)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.165
+        </div>
+        <div class="admin-q-text">ダストコントロール作業法は、不織布の繊維間にほこりを付着させて除去する仕組みである。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(52)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(52)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.168
+        </div>
+        <div class="admin-q-text">汚れの除去工程は、建材の性質及び汚れを確認→作業方法の決定→洗剤の選定で進める。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(53)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(53)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.168
+        </div>
+        <div class="admin-q-text">建材を知るうえで最もポイントとなる点は、耐洗剤性といった化学的性質である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(54)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(54)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.174
+        </div>
+        <div class="admin-q-text">ビニル系シートは床維持剤の密着不良が起きにくい。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(55)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(55)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.179
+        </div>
+        <div class="admin-q-text">カーペットの汚れの85％は、乾いた汚れ（土砂）といわれている。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(56)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(56)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.181
+        </div>
+        <div class="admin-q-text">エクストラクション方式は、ポリッシャー方式に比べると洗浄力が高い。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(57)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(57)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.183
+        </div>
+        <div class="admin-q-text">水性塗装壁の除じんは下方から上方に向けて払い残しのないよう取り除く。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(58)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(58)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.183
+        </div>
+        <div class="admin-q-text">水性塗装壁では、スイッチのまわりなど特に手の触れる箇所であってもスポットクリーニングを施してはならない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(59)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(59)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          6編 ／ p.186
+        </div>
+        <div class="admin-q-text">窓ガラスは、光の透過率が15％減ると汚れが目立つようになる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(60)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(60)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          7編 ／ p.198
+        </div>
+        <div class="admin-q-text">週１回・月１回・年１回というように、相当の間隔をおいて行う清掃作業を臨時清掃という。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(61)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(61)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          7編 ／ p.199
+        </div>
+        <div class="admin-q-text">優秀な体力技能を有する作業員が一定の時間内に行い得る作業量を標準作業量という。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(62)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(62)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          7編 ／ p.201
+        </div>
+        <div class="admin-q-text">通常、日常作業では、主体作業時間に対して5％くらいの余裕時間を見込んでいる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(63)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(63)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          7編 ／ p.201
+        </div>
+        <div class="admin-q-text">標準作業量と同じ考えを時間に適用しても、標準作業時間にはならない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(64)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(64)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          7編 ／ p.203
+        </div>
+        <div class="admin-q-text">作業基準表というのは、ビル内のいろいろな場所に施すべき作業の回数を区域別に整理し一覧表にしたものである。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(65)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(65)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          7編 ／ p.205
+        </div>
+        <div class="admin-q-text">単位作業時間は、作業量要因数×標準作業時間×1日(月間)作業回数で求めることができる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(66)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(66)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          7編 ／ p.208
+        </div>
+        <div class="admin-q-text">作業実施記録表の作成は、作業計画をより現実に適したものに修正するための貴重な基礎資料となる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(67)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(67)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          7編 ／ p.212
+        </div>
+        <div class="admin-q-text">病院清掃の作業計画は、清浄度の高い区域から低い区域へと作業が進められるように立案する。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(68)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(68)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          8編 ／ p.217
+        </div>
+        <div class="admin-q-text">建築物清掃の管理は、計画→実施→点検評価→改善のサイクルを円滑に回すことがポイントである。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(69)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(69)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          8編 ／ p.221
+        </div>
+        <div class="admin-q-text">清掃作業の点検評価は、基本的には目視等による官能検査で行う。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(70)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(70)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          8編 ／ p.223
+        </div>
+        <div class="admin-q-text">清掃の品質構成は作業結果の良否を評価する「作業品質」と作業品質を生み出す「組織品質」から構成される。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(71)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(71)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          8編 ／ p.223
+        </div>
+        <div class="admin-q-text">建築物清掃の品質評価にあたって、建築物使用者の要求を知ることが前提となる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(72)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(72)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          8編 ／ p.227
+        </div>
+        <div class="admin-q-text">トイレ・洗面所清掃の管理上のポイントとして、壁等にタオルをかけて手拭きとして共有することは、感染予防上好ましくない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(73)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(73)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          8編 ／ p.234
+        </div>
+        <div class="admin-q-text">品質管理上の汚れの確認方法として、重点を絞って点検・評価・判定するのではなく、すべてをくまなく見るほうが妥当な評価・判定をすることができる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(74)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(74)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          9編 ／ p.240
+        </div>
+        <div class="admin-q-text">廃棄物処理の基本である減量化とは、廃棄物を最終処理する前に物理的・化学的・生物学的に安定した状態に処理することを言う。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(75)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(75)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          9編 ／ p.241
+        </div>
+        <div class="admin-q-text">循環型社会形成のための具体的な取り組みである３Ｒとは、リデュース、リユース、リサイクルである。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(76)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(76)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          9編 ／ p.243
+        </div>
+        <div class="admin-q-text">同一規模の建物であれば、使用用途が異なっても、ごみの量はそれほど違わない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(77)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(77)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          9編 ／ p.249
+        </div>
+        <div class="admin-q-text">ごみの分別は、衛生的及び経済的観点から、発生時点で行うより中間処理の段階で行うほうが好ましい。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(78)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(78)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          9編 ／ p.250
+        </div>
+        <div class="admin-q-text">産業廃棄物のマニフェスト（産業廃棄物管理票）は、廃棄物処理の終了後に伝票の返済を受け、照合確認し、３年間保存しなければならない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(79)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(79)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          9編 ／ p.251
+        </div>
+        <div class="admin-q-text">注射針の針刺し事故は、最近では医療施設以外においても報告されている。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(80)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(80)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          10編 ／ p.257
+        </div>
+        <div class="admin-q-text">労働災害発生状況は、全体の約45％が墜落・転落事故である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(81)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(81)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          10編 ／ p.259
+        </div>
+        <div class="admin-q-text">災害発生の人的原因の本質的な要因として知識の欠除も含む。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(82)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(82)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          10編 ／ p.267
+        </div>
+        <div class="admin-q-text">高所作業について、高さ３ｍ以上の場所での作業は墜落による労働者の危険を防止するため、作業床の設置が義務付けられている。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(83)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(83)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          10編 ／ p.270
+        </div>
+        <div class="admin-q-text">塩素系の漂白剤を使い、すぐあとに酸性タイプの洗浄剤と一緒に使うと、中和され比較的安全な状態となる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(84)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(84)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          10編 ／ p.271
+        </div>
+        <div class="admin-q-text">殺虫剤は全て毒性を有しており、誤飲、誤食すると死亡することもあるので、その管理には十分注意を要する。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(85)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(85)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          10編 ／ p.272
+        </div>
+        <div class="admin-q-text">作業手順は「むりなく・むだなく・むらなく」できる手順でなければならない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(86)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(86)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          11編 ／ p.290
+        </div>
+        <div class="admin-q-text">感染が発生する重要な感染経路として、接触感染、飛沫感染、空気感染の３つがある。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(87)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(87)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          11編 ／ p.291
+        </div>
+        <div class="admin-q-text">清掃における衛生管理での建物の区域として、汚染区域と清潔区域がある。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(88)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(88)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          11編 ／ p.292
+        </div>
+        <div class="admin-q-text">手洗いは「ヒトの手指を消毒する」といえ、滅菌することができる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(89)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(89)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          11編 ／ p.293
+        </div>
+        <div class="admin-q-text">消毒薬のなかでも生息できる微生物がいる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(90)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(90)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          11編 ／ p.295
+        </div>
+        <div class="admin-q-text">吐瀉物は高さ1ｍでも広範囲に飛び散るので広い範囲の消毒が必要である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(91)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(91)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          12編 ／ p.297
+        </div>
+        <div class="admin-q-text">「建築物における衛生的環境の確保に関する法律」は建築物内の環境衛生の維持管理に関する特別法として制定された。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(92)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(92)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          12編 ／ p.298
+        </div>
+        <div class="admin-q-text">建築物衛生法による特定建築物の所有者は厚生労働省に届出を行わなければならない。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(93)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(93)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          12編 ／ p.299
+        </div>
+        <div class="admin-q-text">建築物環境衛生管理基準では定期清掃（大掃除）を1年以内ごとに1回、定期に統一的に行う。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(94)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(94)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          12編 ／ p.300
+        </div>
+        <div class="admin-q-text">建築物衛生法による事業登録の有効期間は５年である。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(95)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(95)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          12編 ／ p.301
+        </div>
+        <div class="admin-q-text">清掃作業監督者の役割は、法令的な側面と実際的な側面とに大別して役割を果たすことである。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(96)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(96)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          12編 ／ p.303
+        </div>
+        <div class="admin-q-text">廃棄物処理法では、廃棄物を一般廃棄物と産業廃棄物の二つに分けている。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(97)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(97)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          12編 ／ p.307
+        </div>
+        <div class="admin-q-text">労働安全衛生法によると、快適な作業環境の実現も含まれる。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(98)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(98)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-tf">○×</span>
+          12編 ／ p.308
+        </div>
+        <div class="admin-q-text">事務所衛生基準規則の中で、ねずみ・昆虫等の発生防止に関しては1年以内ごとに1回、定期的に統一的に調査を実施する必要がある。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(99)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(99)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          1編 ／ p.1
+        </div>
+        <div class="admin-q-text">建築物清掃の除去対象物として不適切なものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(100)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(100)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          1編 ／ p.2
+        </div>
+        <div class="admin-q-text">汚れに関する記述で適切でないものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(101)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(101)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          1編 ／ p.3
+        </div>
+        <div class="admin-q-text">カビの発生原因として不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(102)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(102)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          1編 ／ p.4
+        </div>
+        <div class="admin-q-text">建築物清掃の目的として最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(103)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(103)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          1編 ／ p.13
+        </div>
+        <div class="admin-q-text">建築物衛生法の「建築物環境衛生管理基準」に定めのないものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(104)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(104)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          1編
+        </div>
+        <div class="admin-q-text">建築物環境衛生空気管理基準における浮遊粉じんの量の管理基準値で正しいのはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(105)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(105)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          1編 ／ p.24
+        </div>
+        <div class="admin-q-text">ビル内のネズミおよび害虫に関する記述のうち最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(106)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(106)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          2編 ／ p.32
+        </div>
+        <div class="admin-q-text">建築物衛生法で特定建築物に指定している用途の建築物は次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(107)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(107)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          2編 ／ p.33
+        </div>
+        <div class="admin-q-text">建築物の構成のうち構造部材として適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(108)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(108)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          2編 ／ p.42
+        </div>
+        <div class="admin-q-text">建築製図で一般に用いられている建築記号のうち不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(109)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(109)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          2編 ／ p.46
+        </div>
+        <div class="admin-q-text">人間が快適さを感じる居室の空気環境について不適切なものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(110)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(110)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          2編 ／ p.46
+        </div>
+        <div class="admin-q-text">室内の空気環境で、人体の温熱感覚に影響を与える要素のうち、不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(111)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(111)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          2編 ／ p.58-63
+        </div>
+        <div class="admin-q-text">建築各部の汚れに関する記述のうち、不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(112)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(112)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          2編 ／ p.59
+        </div>
+        <div class="admin-q-text">ビルクリーニングからみた階段の特徴について不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(113)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(113)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          2編 ／ p.61
+        </div>
+        <div class="admin-q-text">便所および洗面所の各部位に求められる適性について不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(114)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(114)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          2編 ／ p.62
+        </div>
+        <div class="admin-q-text">エスカレータのビルクリーニング対象部位として不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(115)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(115)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.68
+        </div>
+        <div class="admin-q-text">コンポジションビニル床タイルの特長を述べた記述で誤っているものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(116)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(116)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.69
+        </div>
+        <div class="admin-q-text">リノリウム系床材の特色で適切でないものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(117)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(117)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.71
+        </div>
+        <div class="admin-q-text">大理石の特長を述べた記述の内、誤っているものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(118)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(118)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.71
+        </div>
+        <div class="admin-q-text">花崗岩の特色を述べた記述のうち、誤っているものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(119)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(119)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.72
+        </div>
+        <div class="admin-q-text">セラミックタイルに関する記述の内、誤っているものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(120)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(120)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.73
+        </div>
+        <div class="admin-q-text">木質系床材についての記述の内、誤っているものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(121)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(121)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.76
+        </div>
+        <div class="admin-q-text">カーペット床材の製法による分類に関する次の記述の内、誤っているものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(122)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(122)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.86
+        </div>
+        <div class="admin-q-text">外装仕上げ材に関する記述で最も適切なものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(123)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(123)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.86
+        </div>
+        <div class="admin-q-text">アルミニウムに関する次の記述の内、誤っているものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(124)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(124)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.87
+        </div>
+        <div class="admin-q-text">ステンレスのエッチング仕上げの説明として正しいものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(125)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(125)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.89
+        </div>
+        <div class="admin-q-text">ガラスの虹ヤケの原因に関して該当しないものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(126)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(126)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          3編 ／ p.89
+        </div>
+        <div class="admin-q-text">熱線反射ガラスに関する次の記述の内、誤っているものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(127)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(127)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          4編 ／ p.92.93
+        </div>
+        <div class="admin-q-text">?値を説明する記述で、不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(128)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(128)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          4編 ／ p.93
+        </div>
+        <div class="admin-q-text">洗剤の種類と性質について、不適切な記述は次のうちはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(129)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(129)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          4編 ／ p.93
+        </div>
+        <div class="admin-q-text">万能ｐH試験紙でｐH値を判定した。その説明として適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(130)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(130)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          4編 ／ p.94
+        </div>
+        <div class="admin-q-text">はく離剤の説明を記述している中で、不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(131)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(131)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          4編 ／ p.94
+        </div>
+        <div class="admin-q-text">一般洗剤（汎用洗剤）について最も適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(132)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(132)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          4編 ／ p.98
+        </div>
+        <div class="admin-q-text">洗剤の使用濃度の記述について、適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(133)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(133)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          4編 ／ p.99
+        </div>
+        <div class="admin-q-text">洗剤の希釈倍率を調整する場合の式は次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(134)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(134)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          4編 ／ p.103
+        </div>
+        <div class="admin-q-text">床維持剤の作用に関する説明として最も不適切なものはどれか</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(135)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(135)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          4編 ／ p.108
+        </div>
+        <div class="admin-q-text">水性フロアーポリッシュのワックスタイプとポリマータイプの比較で、適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(136)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(136)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          4編 ／ p.111
+        </div>
+        <div class="admin-q-text">ポリマータイプのフロアーポリッシュ皮膜の粉化現象の原因として考えられるものについて最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(137)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(137)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          4編 ／ p.114
+        </div>
+        <div class="admin-q-text">ビルクリーニングにかかわる材料について、次のうち不適切な記述はどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(138)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(138)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.118
+        </div>
+        <div class="admin-q-text">1000Wの14インチ型ポリッシャーを20Wの蛍光灯を点灯した部屋で30分間連続して使用すると、消費する電力量の正しいものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(139)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(139)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.118
+        </div>
+        <div class="admin-q-text">電圧・電流・抵抗の関係を正しく示した式は次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(140)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(140)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.119
+        </div>
+        <div class="admin-q-text">電気用語及び電気器具に関する記述として、不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(141)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(141)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.123
+        </div>
+        <div class="admin-q-text">電線の太さに関する次の記述のうち、不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(142)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(142)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.126
+        </div>
+        <div class="admin-q-text">真空掃除機について、最も不適切な記述は次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(143)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(143)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.132
+        </div>
+        <div class="admin-q-text">真空掃除機の故障状況「吸い込みが悪い」ときの原因のうち、最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(144)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(144)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.136
+        </div>
+        <div class="admin-q-text">床みがき機（ポリッシャー）の回転部分は、内部が減速歯車構造になっているものが多く、これを（　　）方式という。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(145)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(145)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.137
+        </div>
+        <div class="admin-q-text">ポリッシャー操作の安全注意事項について不適切なものは、次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(146)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(146)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.138
+        </div>
+        <div class="admin-q-text">ポリッシャーのスイッチを入れてもモーターが回転しない故障の原因として、最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(147)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(147)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.141.142
+        </div>
+        <div class="admin-q-text">カーペット洗浄機に関する次の記述のうち、最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(148)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(148)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.145
+        </div>
+        <div class="admin-q-text">モップの房糸素材で帆布糸の説明は、次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(149)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(149)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.148
+        </div>
+        <div class="admin-q-text">自在ぼうきの性質に関する次の記述のうち、不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(150)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(150)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          5編 ／ p.152
+        </div>
+        <div class="admin-q-text">品質評価に使用する測定器具に関する次の記述のうち、最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(151)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(151)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.160
+        </div>
+        <div class="admin-q-text">汚れの付着状態で、強い物理的方法を用いて除去する汚れはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(152)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(152)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.161
+        </div>
+        <div class="admin-q-text">表面の凹凸が激しく、特にくぼみが深い建材はどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(153)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(153)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.163
+        </div>
+        <div class="admin-q-text">建築物清掃技術基準で安全衛生の向上のために求められているものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(154)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(154)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.164
+        </div>
+        <div class="admin-q-text">ほこりを除去する方法として適切でないものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(155)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(155)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.169
+        </div>
+        <div class="admin-q-text">屋外から屋内に靴による汚れが持ち込まれたときに、床面がその汚れを捕捉する場所として、最も適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(156)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(156)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.170
+        </div>
+        <div class="admin-q-text">建築物の汚染レベルと場所の組み合わせのうち、最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(157)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(157)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.171
+        </div>
+        <div class="admin-q-text">カーペットの繊維を燃やした時、縮れながらくすぶるように燃えて、髪を焼く臭いがするものとして、最も適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(158)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(158)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.174
+        </div>
+        <div class="admin-q-text">ドライ方式を導入する際、基礎皮膜の硬化のために行うバフ作業のサイクルとして、最も適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(159)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(159)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.176
+        </div>
+        <div class="admin-q-text">石材系床材の日常清掃として、最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(160)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(160)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.179
+        </div>
+        <div class="admin-q-text">ヘビートラフィック・エリアのカーペット床の吸じん作業を行う機材として、最も適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(161)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(161)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.184
+        </div>
+        <div class="admin-q-text">ステンレススチールの表面仕上げにあてはまらないものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(162)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(162)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          6編 ／ p.190
+        </div>
+        <div class="admin-q-text">エスカレータの清掃で、自在ぼうき又は真空掃除機を用いる部位はどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(163)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(163)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          7編 ／ p.195
+        </div>
+        <div class="admin-q-text">作業計画作成にあたり、最も必要度の低いものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(164)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(164)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          7編 ／ p.197
+        </div>
+        <div class="admin-q-text">清掃四区域のうち専用区域に含まれないものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(165)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(165)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          7編 ／ p.201
+        </div>
+        <div class="admin-q-text">1日の勤務時間の中で、標準作業時間に含まれないものは次のどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(166)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(166)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          7編 ／ p.202
+        </div>
+        <div class="admin-q-text">作業仕様書に明記される項目として、不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(167)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(167)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          7編 ／ p.211
+        </div>
+        <div class="admin-q-text">病院清掃における医療面へ配慮について不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(168)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(168)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          7編 ／ p.212
+        </div>
+        <div class="admin-q-text">病院の清掃管理上のポイントとして不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(169)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(169)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          8編 ／ p.219
+        </div>
+        <div class="admin-q-text">作業手順書作成の要点として最も適切でないものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(170)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(170)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          8編 ／ p.220
+        </div>
+        <div class="admin-q-text">作業の点検評価について、最も適切なものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(171)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(171)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          8編 ／ p.222
+        </div>
+        <div class="admin-q-text">建築物清掃の改善の着眼点として、不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(172)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(172)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          8編 ／ p.224
+        </div>
+        <div class="admin-q-text">品質インスペクションの実施手順として、適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(173)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(173)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          8編 ／ p.224
+        </div>
+        <div class="admin-q-text">事業所管理品質の項目で、不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(174)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(174)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          8編 ／ p.233
+        </div>
+        <div class="admin-q-text">建築物清掃の品質点検の方法についての記述のうち、最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(175)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(175)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          9編 ／ p.240
+        </div>
+        <div class="admin-q-text">廃棄物処理の原則でないものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(176)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(176)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          9編 ／ p.244
+        </div>
+        <div class="admin-q-text">ビルとごみ排出量の関係の記述のうち最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(177)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(177)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          9編 ／ p.245
+        </div>
+        <div class="admin-q-text">ごみの三成分表示法の三成分でないものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(178)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(178)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          9編 ／ p.247
+        </div>
+        <div class="admin-q-text">一般的なビル内のごみ処理過程の順序として最も適切なものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(179)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(179)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          9編 ／ p.247
+        </div>
+        <div class="admin-q-text">ごみの一時貯留容器について、適切でないものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(180)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(180)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          9編 ／ p.249
+        </div>
+        <div class="admin-q-text">ビル内のごみの中間処理について、現在ではほとんど用いられない方法は次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(181)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(181)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          10編 ／ p.257
+        </div>
+        <div class="admin-q-text">ビルメンテナンス業における労働災害発生状況に関する記述で最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(182)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(182)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          10編 ／ p.268
+        </div>
+        <div class="admin-q-text">電気・機械設備の取扱いにあたって最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(183)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(183)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          10編 ／ p.274
+        </div>
+        <div class="admin-q-text">整理整頓の要領として、品物を積み上げる場合の原則として最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(184)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(184)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          10編 ／ p.277
+        </div>
+        <div class="admin-q-text">保護具について最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(185)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(185)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          10編 ／ p.286
+        </div>
+        <div class="admin-q-text">リスクアセスメントについて、最も不適切なものは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(186)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(186)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          11編 ／ p.290
+        </div>
+        <div class="admin-q-text">病原性微生物であるウイルスの大きさはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(187)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(187)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          11編 ／ p.293
+        </div>
+        <div class="admin-q-text">消毒薬の殺菌能力についての記述で最も不適切なものは次のどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(188)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(188)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          11編 ／ p.294
+        </div>
+        <div class="admin-q-text">石鹸を使用して手洗いする最も不適切な場合はどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(189)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(189)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          12編 ／ p.299
+        </div>
+        <div class="admin-q-text">建築物衛生法における建築物清掃の管理基準等に関して正しいのは次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(190)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(190)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          12編 ／ p.300
+        </div>
+        <div class="admin-q-text">「建築物における衛生的環境の確保に関する法律」に基づく事業登録についての記述のうち、不適切なものは次のどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(191)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(191)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          12編 ／ p.300
+        </div>
+        <div class="admin-q-text">次のうち事業の登録の種類について誤っているものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(192)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(192)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          12編 ／ p.300
+        </div>
+        <div class="admin-q-text">建築物環境衛生管理技術者の職務で最も不適切なものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(193)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(193)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          12編 ／ p.301
+        </div>
+        <div class="admin-q-text">清掃作業監督者の役割で質的基準に不適切なものは次のどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(194)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(194)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          12編 ／ p.303
+        </div>
+        <div class="admin-q-text">廃棄物処理法で適正化を求めていないものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(195)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(195)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          12編 ／ p.307
+        </div>
+        <div class="admin-q-text">労働安全衛生法の目的の中で次のうち該当しないものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(196)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(196)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          12編 ／ p.307
+        </div>
+        <div class="admin-q-text">ゴンドラ安全規則で規定されていないものはどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(197)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(197)">削除</button>
+      </div>
+    </div><div class="admin-q-item">
+      <div class="admin-q-info">
+        <div class="admin-q-meta">
+          <span class="admin-q-badge abadge-usr">追加</span>
+          <span class="admin-q-badge abadge-ch">択一</span>
+          12編 ／ p.309
+        </div>
+        <div class="admin-q-text">ビルメンテナンス業におけるパートタイム労働者の労働災害防止のためのガイドラインにない項目は次のうちどれか。</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+        <button class="edit-btn" onclick="editUserQuestion(198)">編集</button>
+        <button class="del-btn" onclick="deleteUserQuestion(198)">削除</button>
+      </div>
+    </div></div>
     </div>
   </div>
 
@@ -977,10 +3563,205 @@
 // explanation: 解説文（省略可）
 // ============================================================
 const QUESTIONS = [
-
-  // ★ ここに問題を追加してください ★
-  // （管理画面からも追加できます）
-
+  {"category":"1編","type":"truefalse","text":"建築物清掃は、環境上の異物を除去することによって建築物内外の清潔を維持することにある。","answer":true,"explanation":"","page":"1"},
+  {"category":"1編","type":"truefalse","text":"1.0?以下のほこりを吸入すると、深く肺胞まで侵入する。","answer":true,"explanation":"","page":"2"},
+  {"category":"1編","type":"truefalse","text":"建築物内における空気中細菌数は、一般に粉じん量に反比例しているといわれている。","answer":false,"explanation":"比例しているといわれている","page":"3"},
+  {"category":"1編","type":"truefalse","text":"見た目に清潔できれいであれば、衛生的であると言える。","answer":false,"explanation":"必ずしも衛生的であるとは言えない","page":"4"},
+  {"category":"1編","type":"truefalse","text":"ビルクリーニングは、快適な生活空間を提供し、より質の高い生産活動を生み出す。","answer":true,"explanation":"","page":"5"},
+  {"category":"1編","type":"truefalse","text":"建築物衛生法の管理基準は、最低基準を定めている。","answer":false,"explanation":"最低基準ではなく望ましい基準を定めている","page":"14"},
+  {"category":"1編","type":"truefalse","text":"ビルクリーニングにおいて、細菌等目に見えない汚染物質は作業対象外である。","answer":false,"explanation":"対象内","page":"22"},
+  {"category":"1編","type":"truefalse","text":"ノロウイルス罹患患者の嘔吐物処理には、次亜塩素酸ナトリウムで消毒するのが有効である。","answer":true,"explanation":"","page":"24"},
+  {"category":"2編","type":"truefalse","text":"建設計画で維持管理を考慮することは、ライフサイクルコストに大きな影響がある。","answer":true,"explanation":"","page":"31"},
+  {"category":"2編","type":"truefalse","text":"建築物の構造法で一体式構造は、梁・柱などの細長い材料を組み合わせて骨組みを構成する。","answer":false,"explanation":"一体式構造は、梁・柱などが連続し継ぎ目のない構造である","page":"35"},
+  {"category":"2編","type":"truefalse","text":"鉄筋コンクリート造において、コンクリートの中性化が構造体の寿命に影響することはない。","answer":false,"explanation":"大きく影響する","page":"39"},
+  {"category":"2編","type":"truefalse","text":"排水トラップが破封すると、排水管から悪臭を発することがある。","answer":true,"explanation":"","page":"50"},
+  {"category":"2編","type":"truefalse","text":"浄化槽に流入した汚物は浄化され、河川などの公共用水域に放流される。","answer":true,"explanation":"","page":"52"},
+  {"category":"2編","type":"truefalse","text":"建築物内のコンセントの電圧は一般的に100Ｖであるが、200Ｖの場合もある。","answer":true,"explanation":"","page":"53"},
+  {"category":"2編","type":"truefalse","text":"ビルクリーニングの立場からみた便所の特徴は小スペースのため、対象建材の種類も少ない。","answer":false,"explanation":"小スペースであるが、建材は豊富である","page":"61"},
+  {"category":"2編","type":"truefalse","text":"エレベータ、エスカレータ設備の維持管理においては、なにより美観向上が大切である。","answer":false,"explanation":"安全運行への寄与","page":"62"},
+  {"category":"3編","type":"truefalse","text":"バインダー含有率30％未満のものは、コンポジションビニル床タイルに分類される。","answer":true,"explanation":"","page":"68"},
+  {"category":"3編","type":"truefalse","text":"ビニル系床シートは、単層、複層、発泡複層ビニル床シートのみに分類される。","answer":false,"explanation":"クッションフロアも含まれる","page":"68"},
+  {"category":"3編","type":"truefalse","text":"リノリウムは剥離剤では変色しない。","answer":false,"explanation":"変色する場合がある","page":"69"},
+  {"category":"3編","type":"truefalse","text":"ゴム系タイルは油類に耐性がある。","answer":false,"explanation":"油類には耐性がない","page":"69"},
+  {"category":"3編","type":"truefalse","text":"石材は鏡面状に仕上げられていても、細かい孔があるために汚れが入りやすい。","answer":true,"explanation":"","page":"70"},
+  {"category":"3編","type":"truefalse","text":"木質系床材は、表面塗装の有無でメンテナンス性がかなり異なる。","answer":true,"explanation":"","page":"73"},
+  {"category":"3編","type":"truefalse","text":"タフテッドカーペットで使用されているラテックスゴムは水の影響は受けない。","answer":false,"explanation":"水によって膨潤し脆化する","page":"77"},
+  {"category":"3編","type":"truefalse","text":"天井仕上げ材料としては、軟質繊維板やロックウール吸音板がある。","answer":true,"explanation":"","page":"83"},
+  {"category":"3編","type":"truefalse","text":"ステンレススチールは、もらい錆を受けない。","answer":false,"explanation":"もらい錆を受ける場合が多い","page":"87"},
+  {"category":"3編","type":"truefalse","text":"ガラスは酸性の洗剤によってヤケと呼ばれる変色が生じる。","answer":false,"explanation":"アルカリ成分","page":"89"},
+  {"category":"4編","type":"truefalse","text":"洗剤としての必要条件の1つとして、乳化・分散性のあることが挙げられる。","answer":true,"explanation":"","page":"92"},
+  {"category":"4編","type":"truefalse","text":"?値が1変化すると水素イオン濃度が10倍あるいは10分の1変化することになる。","answer":true,"explanation":"","page":"93"},
+  {"category":"4編","type":"truefalse","text":"剥離剤の液性は一般的に?値が6未満である。","answer":false,"explanation":"?値が11～14のアルカリ性","page":"94"},
+  {"category":"4編","type":"truefalse","text":"洗剤の主成分である界面活性剤は水の表面張力を高めるために使用されている。","answer":false,"explanation":"水の表面張力を抑えるため","page":"95"},
+  {"category":"4編","type":"truefalse","text":"界面活性剤の分子は親水基と親油基からなっている。","answer":true,"explanation":"","page":"96"},
+  {"category":"4編","type":"truefalse","text":"洗剤の濃度はその濃さに比例し、効果が増す。","answer":false,"explanation":"効果が増すことはない","page":"99"},
+  {"category":"4編","type":"truefalse","text":"フロアーポリッシュを床に塗布すると、その皮膜を除去することができなくなる。","answer":false,"explanation":"物理的および化学的方法により、容易に除去できる","page":"105"},
+  {"category":"4編","type":"truefalse","text":"多くの水性フロアーポリッシュポリマータイプは皮膜の形成に金属架橋を利用している。","answer":true,"explanation":"","page":"107"},
+  {"category":"4編","type":"truefalse","text":"アルカリ電解水は環境に対する影響が大きいとされているため、使用されなくなった。","answer":false,"explanation":"水が主体となるため環境負荷の少ないことが特徴","page":"116"},
+  {"category":"5編","type":"truefalse","text":"電力量（Ｗｈ）は電圧（Ｖ）×電流（Ａ）で表される。","answer":false,"explanation":"電力量（Ｗｈ）＝電力(Ｗ)×時間(ｈ)","page":"118"},
+  {"category":"5編","type":"truefalse","text":"定格とは、その電気機械器具に保障されている使用限度をいう。","answer":true,"explanation":"","page":"118"},
+  {"category":"5編","type":"truefalse","text":"電力会社から一般家庭やビル・工場などに動力として来ている電気は直流である。","answer":false,"explanation":"交流","page":"119"},
+  {"category":"5編","type":"truefalse","text":"最大電流が15Aの標準的なコンセントにおいて、100Vの場合2.0ｋWまでなら使用することができる。","answer":false,"explanation":"1.5ｋWを超えるものは使えない。","page":"121"},
+  {"category":"5編","type":"truefalse","text":"小型のカーペットスイーパーは、たたみやその他の床の掃き掃除にも使われる。","answer":true,"explanation":"","page":"126"},
+  {"category":"5編","type":"truefalse","text":"真空掃除機のフィルターの目にほこりが多量に付着すると、モーターの負荷が重くなり、過熱し故障の原因になる。","answer":false,"explanation":"モータの負荷が軽くなり、過熱し故障の原因になる","page":"129"},
+  {"category":"5編","type":"truefalse","text":"真空掃除機は、ノズルを床面にぴったりと密着させて使用すると、吸い込みが良くなる。","answer":false,"explanation":"密着させない・ノズルを動かして使用が必要","page":"131"},
+  {"category":"5編","type":"truefalse","text":"ポリッシャーの操作中に異常音が発生する原因のひとつには、モーター内部の入水によるものがある。","answer":false,"explanation":"ギヤの破損・ベアリングの破損","page":"138"},
+  {"category":"5編","type":"truefalse","text":"バフ用パッドの繊維素材は、摩擦や耐熱性・耐久性に富み、復元力のあるナイロン繊維が主に使用されている。","answer":false,"explanation":"ポリエステル繊維が主に使用されている","page":"140"},
+  {"category":"5編","type":"truefalse","text":"ドライフォーム方式とは、洗浄液を直接カーペットに噴射後直ちに吸引回収する方式である。","answer":false,"explanation":"エクストラクション方式の記述である","page":"141"},
+  {"category":"5編","type":"truefalse","text":"スチーム方式カーペット洗浄機は、高温・高圧のスチームを噴射するので、汚れの分解が容易である。","answer":true,"explanation":"","page":"142"},
+  {"category":"5編","type":"truefalse","text":"光沢度計は光の反射率で測定部の汚れや凹凸の状態を評価する測定器である。","answer":false,"explanation":"汚れではなく表面の凹凸の状態、平滑度合を判断する","page":"152"},
+  {"category":"6編","type":"truefalse","text":"有機質の汚れ物質は植物性、動物性、化学性の３つに大別される。","answer":true,"explanation":"","page":"158"},
+  {"category":"6編","type":"truefalse","text":"ビルの汚れ物質のなかには疎水性のものもあるが、その大部分は水溶性物質である。","answer":false,"explanation":"油溶性物質","page":"158"},
+  {"category":"6編","type":"truefalse","text":"油溶性のしみでウェットタイプのものは、付着後の乾燥が早いから固着化する特徴がある。","answer":false,"explanation":"ウェットタイプは、放置すると汚れを吸着して強度のしみとなる。","page":"159"},
+  {"category":"6編","type":"truefalse","text":"一般にプラスチック系の建材は油脂性の汚れが蓄積しやすい。","answer":true,"explanation":"","page":"159"},
+  {"category":"6編","type":"truefalse","text":"ビル内のほこりは、外部から侵入する土ぼこりより、内部で発生する綿ぼこりの方が圧倒的に多い。","answer":false,"explanation":"外部から侵入する土ぼこりが多い","page":"161"},
+  {"category":"6編","type":"truefalse","text":"ダストコントロール作業法は、不織布の繊維間にほこりを付着させて除去する仕組みである。","answer":false,"explanation":"綿布やモップに微量の油または界面活性剤を含まる方法","page":"165"},
+  {"category":"6編","type":"truefalse","text":"汚れの除去工程は、建材の性質及び汚れを確認→作業方法の決定→洗剤の選定で進める。","answer":false,"explanation":"汚れの確認→洗剤の選定→方法の決定","page":"168"},
+  {"category":"6編","type":"truefalse","text":"建材を知るうえで最もポイントとなる点は、耐洗剤性といった化学的性質である。","answer":true,"explanation":"","page":"168"},
+  {"category":"6編","type":"truefalse","text":"ビニル系シートは床維持剤の密着不良が起きにくい。","answer":false,"explanation":"密着不良が起きやすい","page":"174"},
+  {"category":"6編","type":"truefalse","text":"カーペットの汚れの85％は、乾いた汚れ（土砂）といわれている。","answer":true,"explanation":"","page":"179"},
+  {"category":"6編","type":"truefalse","text":"エクストラクション方式は、ポリッシャー方式に比べると洗浄力が高い。","answer":false,"explanation":"洗浄力は低い","page":"181"},
+  {"category":"6編","type":"truefalse","text":"水性塗装壁の除じんは下方から上方に向けて払い残しのないよう取り除く。","answer":false,"explanation":"上方から下方に向けて行う","page":"183"},
+  {"category":"6編","type":"truefalse","text":"水性塗装壁では、スイッチのまわりなど特に手の触れる箇所であってもスポットクリーニングを施してはならない。","answer":false,"explanation":"スポットクリーニングを施す","page":"183"},
+  {"category":"6編","type":"truefalse","text":"窓ガラスは、光の透過率が15％減ると汚れが目立つようになる。","answer":true,"explanation":"","page":"186"},
+  {"category":"7編","type":"truefalse","text":"週１回・月１回・年１回というように、相当の間隔をおいて行う清掃作業を臨時清掃という。","answer":false,"explanation":"定期清掃という","page":"198"},
+  {"category":"7編","type":"truefalse","text":"優秀な体力技能を有する作業員が一定の時間内に行い得る作業量を標準作業量という。","answer":false,"explanation":"標準的な体力技能を有する作業員","page":"199"},
+  {"category":"7編","type":"truefalse","text":"通常、日常作業では、主体作業時間に対して5％くらいの余裕時間を見込んでいる。","answer":false,"explanation":"12～18％くらいが余裕時間とされている","page":"201"},
+  {"category":"7編","type":"truefalse","text":"標準作業量と同じ考えを時間に適用しても、標準作業時間にはならない。","answer":false,"explanation":"標準作業時間となる","page":"201"},
+  {"category":"7編","type":"truefalse","text":"作業基準表というのは、ビル内のいろいろな場所に施すべき作業の回数を区域別に整理し一覧表にしたものである。","answer":true,"explanation":"","page":"203"},
+  {"category":"7編","type":"truefalse","text":"単位作業時間は、作業量要因数×標準作業時間×1日(月間)作業回数で求めることができる。","answer":true,"explanation":"","page":"205"},
+  {"category":"7編","type":"truefalse","text":"作業実施記録表の作成は、作業計画をより現実に適したものに修正するための貴重な基礎資料となる。","answer":true,"explanation":"","page":"208"},
+  {"category":"7編","type":"truefalse","text":"病院清掃の作業計画は、清浄度の高い区域から低い区域へと作業が進められるように立案する。","answer":true,"explanation":"","page":"212"},
+  {"category":"8編","type":"truefalse","text":"建築物清掃の管理は、計画→実施→点検評価→改善のサイクルを円滑に回すことがポイントである。","answer":true,"explanation":"","page":"217"},
+  {"category":"8編","type":"truefalse","text":"清掃作業の点検評価は、基本的には目視等による官能検査で行う。","answer":true,"explanation":"","page":"221"},
+  {"category":"8編","type":"truefalse","text":"清掃の品質構成は作業結果の良否を評価する「作業品質」と作業品質を生み出す「組織品質」から構成される。","answer":true,"explanation":"","page":"223"},
+  {"category":"8編","type":"truefalse","text":"建築物清掃の品質評価にあたって、建築物使用者の要求を知ることが前提となる。","answer":true,"explanation":"","page":"223"},
+  {"category":"8編","type":"truefalse","text":"トイレ・洗面所清掃の管理上のポイントとして、壁等にタオルをかけて手拭きとして共有することは、感染予防上好ましくない。","answer":true,"explanation":"","page":"227"},
+  {"category":"8編","type":"truefalse","text":"品質管理上の汚れの確認方法として、重点を絞って点検・評価・判定するのではなく、すべてをくまなく見るほうが妥当な評価・判定をすることができる。","answer":false,"explanation":"重点を絞って点検することが、客観性を持たせると同時に、効率的な点検評価につながる","page":"234"},
+  {"category":"9編","type":"truefalse","text":"廃棄物処理の基本である減量化とは、廃棄物を最終処理する前に物理的・化学的・生物学的に安定した状態に処理することを言う。","answer":false,"explanation":"左欄の内容は安定化。減量化は排出量を全体として少なくすること","page":"240"},
+  {"category":"9編","type":"truefalse","text":"循環型社会形成のための具体的な取り組みである３Ｒとは、リデュース、リユース、リサイクルである。","answer":true,"explanation":"","page":"241"},
+  {"category":"9編","type":"truefalse","text":"同一規模の建物であれば、使用用途が異なっても、ごみの量はそれほど違わない。","answer":false,"explanation":"ビルの規模・用途によって左右されるのみならず業務の態様や状況によっても相違する","page":"243"},
+  {"category":"9編","type":"truefalse","text":"ごみの分別は、衛生的及び経済的観点から、発生時点で行うより中間処理の段階で行うほうが好ましい。","answer":false,"explanation":"中間処理の段階で行うより発生時点で行うほうが好ましい","page":"249"},
+  {"category":"9編","type":"truefalse","text":"産業廃棄物のマニフェスト（産業廃棄物管理票）は、廃棄物処理の終了後に伝票の返済を受け、照合確認し、３年間保存しなければならない。","answer":false,"explanation":"マニフェストは、廃棄物処理の終了後に伝票の返済を受け、照合確認し、５年間保存しなければならない","page":"250"},
+  {"category":"9編","type":"truefalse","text":"注射針の針刺し事故は、最近では医療施設以外においても報告されている。","answer":true,"explanation":"","page":"251"},
+  {"category":"10編","type":"truefalse","text":"労働災害発生状況は、全体の約45％が墜落・転落事故である。","answer":false,"explanation":"墜落･転落事故ではなく、転倒事故である","page":"257"},
+  {"category":"10編","type":"truefalse","text":"災害発生の人的原因の本質的な要因として知識の欠除も含む。","answer":true,"explanation":"","page":"259"},
+  {"category":"10編","type":"truefalse","text":"高所作業について、高さ３ｍ以上の場所での作業は墜落による労働者の危険を防止するため、作業床の設置が義務付けられている。","answer":false,"explanation":"高さ2ｍ以上","page":"267"},
+  {"category":"10編","type":"truefalse","text":"塩素系の漂白剤を使い、すぐあとに酸性タイプの洗浄剤と一緒に使うと、中和され比較的安全な状態となる。","answer":false,"explanation":"有毒なガスが出て危険なため、絶対に混合してはならない","page":"270"},
+  {"category":"10編","type":"truefalse","text":"殺虫剤は全て毒性を有しており、誤飲、誤食すると死亡することもあるので、その管理には十分注意を要する。","answer":true,"explanation":"","page":"271"},
+  {"category":"10編","type":"truefalse","text":"作業手順は「むりなく・むだなく・むらなく」できる手順でなければならない。","answer":true,"explanation":"","page":"272"},
+  {"category":"11編","type":"truefalse","text":"感染が発生する重要な感染経路として、接触感染、飛沫感染、空気感染の３つがある。","answer":true,"explanation":"","page":"290"},
+  {"category":"11編","type":"truefalse","text":"清掃における衛生管理での建物の区域として、汚染区域と清潔区域がある。","answer":false,"explanation":"一般区域と汚染区域","page":"291"},
+  {"category":"11編","type":"truefalse","text":"手洗いは「ヒトの手指を消毒する」といえ、滅菌することができる。","answer":false,"explanation":"滅菌することはできない","page":"292"},
+  {"category":"11編","type":"truefalse","text":"消毒薬のなかでも生息できる微生物がいる。","answer":true,"explanation":"","page":"293"},
+  {"category":"11編","type":"truefalse","text":"吐瀉物は高さ1ｍでも広範囲に飛び散るので広い範囲の消毒が必要である。","answer":true,"explanation":"","page":"295"},
+  {"category":"12編","type":"truefalse","text":"「建築物における衛生的環境の確保に関する法律」は建築物内の環境衛生の維持管理に関する特別法として制定された。","answer":false,"explanation":"一般法","page":"297"},
+  {"category":"12編","type":"truefalse","text":"建築物衛生法による特定建築物の所有者は厚生労働省に届出を行わなければならない。","answer":false,"explanation":"都道府県知事","page":"298"},
+  {"category":"12編","type":"truefalse","text":"建築物環境衛生管理基準では定期清掃（大掃除）を1年以内ごとに1回、定期に統一的に行う。","answer":false,"explanation":"6月以内ごとに１回","page":"299"},
+  {"category":"12編","type":"truefalse","text":"建築物衛生法による事業登録の有効期間は５年である。","answer":false,"explanation":"６年","page":"300"},
+  {"category":"12編","type":"truefalse","text":"清掃作業監督者の役割は、法令的な側面と実際的な側面とに大別して役割を果たすことである。","answer":true,"explanation":"","page":"301"},
+  {"category":"12編","type":"truefalse","text":"廃棄物処理法では、廃棄物を一般廃棄物と産業廃棄物の二つに分けている。","answer":true,"explanation":"","page":"303"},
+  {"category":"12編","type":"truefalse","text":"労働安全衛生法によると、快適な作業環境の実現も含まれる。","answer":true,"explanation":"","page":"307"},
+  {"category":"12編","type":"truefalse","text":"事務所衛生基準規則の中で、ねずみ・昆虫等の発生防止に関しては1年以内ごとに1回、定期的に統一的に調査を実施する必要がある。","answer":false,"explanation":"6月以内ごとに１回","page":"308"},
+  {"category":"1編","type":"choice","text":"建築物清掃の除去対象物として不適切なものは次のうちどれか。","options":["堆積じん","ダニの死骸","二酸化炭素","化学繊維粉"],"answer":2,"explanation":"二酸化炭素は清掃では除去出来ない","page":"1"},
+  {"category":"1編","type":"choice","text":"汚れに関する記述で適切でないものは次のうちどれか。","options":["汚れは有害物を含むものと含まないものがある","汚れの大部分は空気中の粉じんやミストである","汚れは美観を損ない、建材に悪影響がある","汚れは人に心理的影響を与える"],"answer":1,"explanation":"手垢や分泌物","page":"2"},
+  {"category":"1編","type":"choice","text":"カビの発生原因として不適切なものはどれか。","options":["温度","栄養分","湿度","光"],"answer":3,"explanation":"光はカビの発生原因ではない","page":"3"},
+  {"category":"1編","type":"choice","text":"建築物清掃の目的として最も不適切なものはどれか。","options":["自然環境の管理","安全性の確保","美観の向上","保全性の寄与"],"answer":0,"explanation":"衛生的環境の確保","page":"4"},
+  {"category":"1編","type":"choice","text":"建築物衛生法の「建築物環境衛生管理基準」に定めのないものは次のうちどれか。","options":["空気環境の調整","採光および照明","給水および排水の管理","清掃およびねずみ、昆虫等の防除"],"answer":1,"explanation":"採光および照明は同基準の定めにない","page":"13"},
+  {"category":"1編","type":"choice","text":"建築物環境衛生空気管理基準における浮遊粉じんの量の管理基準値で正しいのはどれか。","options":["空気１?につき0.05mg以下","空気１?につき0.10mg以下","空気１?につき0.15mg以下","空気１?につき0.20mg以下"],"answer":2,"explanation":"\"管理基準値：","page":""},
+  {"category":"1編","type":"choice","text":"ビル内のネズミおよび害虫に関する記述のうち最も不適切なものはどれか。","options":["都市におけるビルや地下街ではドブネズミが優勢である","ビル内はゴキブリにとっても住みよい環境になった","ビル内で特に多くみられるのは、チャバネゴキブリである","排水設備の進歩などによりドブネズミは減少している"],"answer":0,"explanation":"クマネズミが優勢である","page":"24"},
+  {"category":"2編","type":"choice","text":"建築物衛生法で特定建築物に指定している用途の建築物は次のうちどれか。","options":["共同住宅","工場","百貨店","病院"],"answer":2,"explanation":"ウ以外は特定建築物の用途に指定されていない","page":"32"},
+  {"category":"2編","type":"choice","text":"建築物の構成のうち構造部材として適切なものはどれか。","options":["間仕切り壁","建具","ぞうさく","梁"],"answer":3,"explanation":"エ以外は非構造部材である","page":"33"},
+  {"category":"2編","type":"choice","text":"建築製図で一般に用いられている建築記号のうち不適切なものはどれか。","options":["ＲＣ：鉄筋コンクリート","ＰＳ：パイプスペース","ＥＳＣ：エレベータ","ＡＤ：アルミニウム扉"],"answer":2,"explanation":"ＥＳＣはエスカレータを示す","page":"42"},
+  {"category":"2編","type":"choice","text":"人間が快適さを感じる居室の空気環境について不適切なものは次のうちどれか。","options":["夏季は室内温度26～27℃程度","冬季は室内温度23～25℃程度","夏季は湿度50～60％程度","冬季は湿度45～60％程度"],"answer":1,"explanation":"冬季は20～22℃程度","page":"46"},
+  {"category":"2編","type":"choice","text":"室内の空気環境で、人体の温熱感覚に影響を与える要素のうち、不適切なものはどれか。","options":["空気の温度","湿度","輻射熱","二酸化炭素濃度"],"answer":3,"explanation":"二酸化炭素　→　気流","page":"46"},
+  {"category":"2編","type":"choice","text":"建築各部の汚れに関する記述のうち、不適切なものはどれか。","options":["主な床の汚れは土砂や雨水の汚れ、繊維粉のほこりである","壁の高所部分には油汚れの付着が顕著である","天井の主な汚れはほこりで、空調器具周辺に集中する","照明器具の汚れは、主にほこりと害虫の排泄物である"],"answer":1,"explanation":"壁のスイッチまわり・コーナーまわりで顕著","page":"58-63"},
+  {"category":"2編","type":"choice","text":"ビルクリーニングからみた階段の特徴について不適切なものはどれか。","options":["エレベータが設置されていても、上層階は汚れやすい","ほこりの集中する場所である","手すりにはほこり・手垢類が付着する","床材保護、スリップ防止による安全性確保が重要である"],"answer":0,"explanation":"上層階→下層階","page":"59"},
+  {"category":"2編","type":"choice","text":"便所および洗面所の各部位に求められる適性について不適切なものはどれか。","options":["高い吸水性","高い耐薬品性","優れた耐摩耗性","優れた衛生性"],"answer":0,"explanation":"吸水性が低いこと","page":"61"},
+  {"category":"2編","type":"choice","text":"エスカレータのビルクリーニング対象部位として不適切なものはどれか。","options":["ランディングプレート","操作盤","デルタガード","デッキボード"],"answer":1,"explanation":"操作盤はクリーニング対象外","page":"62"},
+  {"category":"3編","type":"choice","text":"コンポジションビニル床タイルの特長を述べた記述で誤っているものはどれか。","options":["サイズは30cm角、45cm角のものが主である","耐薬品性には富んでいない","床維持剤との密着性に問題がある場合が多い","ビニルアスベスト床タイルに代わって登場した床材"],"answer":2,"explanation":"床維持剤との密着性に問題はない","page":"68"},
+  {"category":"3編","type":"choice","text":"リノリウム系床材の特色で適切でないものはどれか。","options":["独特の弾力性がある","歩行感に優れる","アルカリ性洗剤に弱い","溶剤には強い"],"answer":3,"explanation":"P69参照","page":"69"},
+  {"category":"3編","type":"choice","text":"大理石の特長を述べた記述の内、誤っているものはどれか。","options":["土砂よりも硬度が高い","主成分は炭酸カルシウムである","酸性の薬剤に弱い","研磨作業で修復しやすい"],"answer":0,"explanation":"土砂よりも硬度が低い","page":"71"},
+  {"category":"3編","type":"choice","text":"花崗岩の特色を述べた記述のうち、誤っているものはどれか。","options":["長石（白）、雲母（黒）、石英（灰色）からなる","アルカリ性に弱い","黒御影（ハンレイ岩）はトイレの汚垂石に利用される","一部、酸に弱い石種もある"],"answer":1,"explanation":"耐アルカリ性に富んでいる","page":"71"},
+  {"category":"3編","type":"choice","text":"セラミックタイルに関する記述の内、誤っているものはどれか。","options":["表面を研磨で仕上げたものはない","木材風や天然石風に仕上げたものがある","磁器質タイルは、打てば金属のような音がする","陶器質タイルは、打てば濁音がする"],"answer":0,"explanation":"表面を研磨で仕上げたものがある","page":"72"},
+  {"category":"3編","type":"choice","text":"木質系床材についての記述の内、誤っているものはどれか。","options":["単層フローリングと複合フローリングに分類される","単層フローリングとはすべて1枚の板で出来ているものをいう","針葉樹ではマツ、ヒノキが使用されている","広葉樹ではブナ、ナラ、サクラが使用されている"],"answer":1,"explanation":"全てではなく、厚さ方向が1枚で出来ているもの","page":"73"},
+  {"category":"3編","type":"choice","text":"カーペット床材の製法による分類に関する次の記述の内、誤っているものはどれか。","options":["パイルのあるものとないものに分けられる","ウィルトンは織りカーペットに分類される","タフテッドは刺しゅうカーペットに分類される","タイルカーペットは接着カーペットに分類される"],"answer":3,"explanation":"タイルカーペットは刺しゅうカーペット","page":"76"},
+  {"category":"3編","type":"choice","text":"外装仕上げ材に関する記述で最も適切なものは次のうちどれか。","options":["セラミックタイルとしては陶器質が多く用いられる","花崗岩より、大理石が多く用いられる","アルミニウムは孔食状の腐食を起こす","ステンレススチールは耐食性があり、もらい錆をうけにくい"],"answer":2,"explanation":"ウ　P86参照","page":"86"},
+  {"category":"3編","type":"choice","text":"アルミニウムに関する次の記述の内、誤っているものはどれか。","options":["加工しやすい金属である","軟らかい金属である","アルカリや酸にも侵されない","耐候性を持たせるために塗膜処理されたものがある"],"answer":2,"explanation":"アルカリや酸には侵される","page":"86"},
+  {"category":"3編","type":"choice","text":"ステンレスのエッチング仕上げの説明として正しいものはどれか。","options":["連続的な研磨目をつけて仕上げたもの","無方向性の研磨目をつけて仕上げたもの","化学処理によって浮き出し模様にしたもの","バフがけを行い、表面を光輝ある仕上げにしたもの"],"answer":2,"explanation":"P87参照","page":"87"},
+  {"category":"3編","type":"choice","text":"ガラスの虹ヤケの原因に関して該当しないものはどれか。","options":["炭酸ガス","マンガン","けい酸","アンモニア"],"answer":1,"explanation":"マンガンはアルミニウムの合金元素","page":"89"},
+  {"category":"3編","type":"choice","text":"熱線反射ガラスに関する次の記述の内、誤っているものはどれか。","options":["金属酸化膜をコーティングしたものが多い","金属膜面は傷がつきにくい","金属膜面は両面の場合もある","酸性洗剤やアルカリ洗剤の使用は避ける"],"answer":1,"explanation":"金属膜面は微粉塵でも傷がつく","page":"89"},
+  {"category":"4編","type":"choice","text":"?値を説明する記述で、不適切なものはどれか。","options":["純水は?値7で中性である","弱アルカリ性洗剤は?値が8を超え11以下である","?値が5を示すものは弱酸性といえる","中性洗剤は?値が7を超え～9以下を示すものである"],"answer":3,"explanation":"P92　1.5 洗剤とｐH値 参照","page":"92.93"},
+  {"category":"4編","type":"choice","text":"洗剤の種類と性質について、不適切な記述は次のうちはどれか。","options":["洗剤は汚れの分離、溶解、分散などの働きを助ける役目をする","洗剤の必要条件の一つとして、水に溶けないものを溶かす作用がある","水素イオン濃度?10のものは?8のものより20倍アルカリ性が高い","花崗岩の洗浄には酸性洗剤が用いられることがあるが、注意深く使用する"],"answer":2,"explanation":"水素イオン濃度についてはP93参照","page":"93"},
+  {"category":"4編","type":"choice","text":"万能ｐH試験紙でｐH値を判定した。その説明として適切なものはどれか。","options":["試験紙の色が橙色だったので液性は弱アルカリ性である","酸性が増加すると呈色は赤から青へ変化する","ｐH７の呈色は緑色である","弱酸性の液を試験紙に付けたら紫色になった"],"answer":2,"explanation":"P93　図４－１参照","page":"93"},
+  {"category":"4編","type":"choice","text":"はく離剤の説明を記述している中で、不適切なものはどれか。","options":["リノリウム床に使用する場合は５～15倍に希釈したものを用いる","フロアーポリッシュの皮膜を全面的に除去する","一般的に液性はアルカリ性である","金属架橋をはずす有機アルカリなどが配合されている"],"answer":0,"explanation":"P94　2.3 はく離剤 参照","page":"94"},
+  {"category":"4編","type":"choice","text":"一般洗剤（汎用洗剤）について最も適切なものはどれか。","options":["中性洗剤は建材を傷め、変色させる恐れがある","中性洗剤は洗浄力がアルカリ性洗剤より優れる","弱アルカリ性洗剤は壁面･塗装面･金属面等にも使用できる","アルカリ性洗剤は、軽微な汚れの除去に適す"],"answer":2,"explanation":"P94参照","page":"94"},
+  {"category":"4編","type":"choice","text":"洗剤の使用濃度の記述について、適切なものはどれか。","options":["界面活性剤は、溶液の中で一定の濃度に達すると、分子が集合体をつくる性質がある","ビルクリーニングで使われる業務用洗剤では、使用濃度を表示することが法律で定められている","洗剤は2倍で使用した場合が最も効果的である","ミセルの存在する最高濃度を臨界ミセル濃度という"],"answer":0,"explanation":"P98参照","page":"98"},
+  {"category":"4編","type":"choice","text":"洗剤の希釈倍率を調整する場合の式は次のうちどれか。","options":["（洗剤原液の量＋水の量）÷洗剤原液の量＝希釈倍率","（洗剤原液の量＋水の量）÷水の量＝希釈倍率","洗剤原液の量÷水の量＝希釈倍率","洗剤の原液の量＋水の量＝希釈倍率"],"answer":0,"explanation":"P99参照","page":"99"},
+  {"category":"4編","type":"choice","text":"床維持剤の作用に関する説明として最も不適切なものはどれか","options":["床維持剤とは床を保護するために用いる塗布剤を総称した言葉である","微細な凹凸のある表面に床維持剤を塗布すると表面が平滑になる","床維持剤を塗布すると薄い皮膜が形成される","床維持剤は、床材に仕上げをするという意味で、フロアーバニッシュとも呼ばれている"],"answer":3,"explanation":"フロアーフィニッシュなどとも呼ばれている","page":"103"},
+  {"category":"4編","type":"choice","text":"水性フロアーポリッシュのワックスタイプとポリマータイプの比較で、適切なものはどれか。","options":["塗布後の光沢はワックスタイプの方が低い","耐滑り性はポリマータイプの方が低い","耐久性はワックスタイプの方が高い","ポリマータイプは塗布後に磨き作業が必要である"],"answer":0,"explanation":"P108参照","page":"108"},
+  {"category":"4編","type":"choice","text":"ポリマータイプのフロアーポリッシュ皮膜の粉化現象の原因として考えられるものについて最も不適切なものはどれか。","options":["床面に洗剤分・油分を付着させた状態での塗布","洗浄後の乾燥不十分な状態での塗布","高温時の塗布","雨天時・梅雨時など、湿度の高い条件での塗布"],"answer":2,"explanation":"P111参照","page":"111"},
+  {"category":"4編","type":"choice","text":"ビルクリーニングにかかわる材料について、次のうち不適切な記述はどれか。","options":["溶剤には、引火性、中毒性のおそれがあり、取り扱いには十分注意する","尿石を除去する場合、酸性洗剤と次亜塩素酸ナトリウムを混合すると効果的である","帯電防止剤の主成分はカチオン界面活性剤、両面界面活性剤が代表的である","防汚剤の二次加工の技法には不安定な要素が多く、効果も一時的なところがある"],"answer":1,"explanation":"P114参照","page":"114"},
+  {"category":"5編","type":"choice","text":"1000Wの14インチ型ポリッシャーを20Wの蛍光灯を点灯した部屋で30分間連続して使用すると、消費する電力量の正しいものは次のうちどれか。","options":["0.5kWh","0.51kWh","5.0kWh","5.1kWh"],"answer":1,"explanation":"P118参照","page":"118"},
+  {"category":"5編","type":"choice","text":"電圧・電流・抵抗の関係を正しく示した式は次のうちどれか。","options":["電力（W）＝電圧（V）÷電流（A）","電力（W）＝電圧（V）×電流（A）","電力（W）＝電圧（V）×抵抗（Ω）","電力（W）＝電流（A）×抵抗（Ω）"],"answer":1,"explanation":"P118参照","page":"118"},
+  {"category":"5編","type":"choice","text":"電気用語及び電気器具に関する記述として、不適切なものはどれか。","options":["交流とは、電流の流れが一定時間ごとの周期で変化する電流のことである","絶縁とは、電線や電気器具から電流が漏れないようにすることである","漏電とは、電流が何かの原因でどこかにつながって電気が漏れる現象である","分電盤とは、電気を入れたり切ったりする器具である"],"answer":3,"explanation":"P119参照","page":"119"},
+  {"category":"5編","type":"choice","text":"電線の太さに関する次の記述のうち、不適切なものはどれか。","options":["電線に流れる電流の大きさは電線の断面積に反比例する","電流を多く消費する電気器具には太い電線が必要である","電線が細すぎると電圧が下がって、電気器具が動かなくなることもある","電線の太さに応じて安全に流してよい電流の大きさが定められている"],"answer":0,"explanation":"断面積に比例する","page":"123"},
+  {"category":"5編","type":"choice","text":"真空掃除機について、最も不適切な記述は次のうちどれか。","options":["繊維の間や狭い隙間に入っているほこりを吸引除去できる","落着した微細なほこりを、タオルやダスタークロスで拭く場合よりもよく取れる","除去したごみやほこりの処置が簡便である","一般の機種では、可視以下の微細なほこりや細菌がフィルターを通過するものがある"],"answer":1,"explanation":"P126参照","page":"126"},
+  {"category":"5編","type":"choice","text":"真空掃除機の故障状況「吸い込みが悪い」ときの原因のうち、最も不適切なものはどれか。","options":["モーターの回転が悪い場合","フィルターの目詰まり","モーターの絶縁不良","排気口が詰まっている"],"answer":2,"explanation":"P132　表5-2参照","page":"132"},
+  {"category":"5編","type":"choice","text":"床みがき機（ポリッシャー）の回転部分は、内部が減速歯車構造になっているものが多く、これを（　　）方式という。","options":["ベルトドライブ","ゴムタイヤ","インターナル","インバーター"],"answer":2,"explanation":"P136参照","page":"136"},
+  {"category":"5編","type":"choice","text":"ポリッシャー操作の安全注意事項について不適切なものは、次のうちどれか。","options":["使用前に、ブラシ・パッドの消耗具合を確認する","使用する際に、プラグをコンセントに差し込んだ後、横に倒す","コードは巻き取りながら作業する","壁際は、右から左へ平行に操作する"],"answer":1,"explanation":"P137参照","page":"137"},
+  {"category":"5編","type":"choice","text":"ポリッシャーのスイッチを入れてもモーターが回転しない故障の原因として、最も不適切なものはどれか。","options":["ガバナの接点不良","コネクターの取付け不良","プラグの不良","スイッチの接点不良"],"answer":0,"explanation":"P138参照","page":"138"},
+  {"category":"5編","type":"choice","text":"カーペット洗浄機に関する次の記述のうち、最も不適切なものはどれか。","options":["ポリッシャー方式洗浄機は起動用コンデンサ、運転コンデンサを備えている","エクストラクション方式洗浄機は天然繊維の洗浄に適している","スチーム方式洗浄機は、汚れの分解が容易であるが素材の縮みや乾燥に問題がないとはいえない","パウダー方式洗浄機は、パイルを起毛しパウダーをすり込む構造になっており、軽度な汚れ除去に適している"],"answer":1,"explanation":"化学繊維","page":"141.142"},
+  {"category":"5編","type":"choice","text":"モップの房糸素材で帆布糸の説明は、次のうちどれか。","options":["綿が多いが、雑繊維も交じっていて品質が不安定である","テトロン・ナイロンなどを使用し水の含みはよいが品質が悪く耐久力がない","ポリエステルとポリアミドを使用し、目に見えないレベルの汚れも除去できる","綿・合成繊維を使用しもっとも丈夫で耐久力がある"],"answer":3,"explanation":"P145参照","page":"145"},
+  {"category":"5編","type":"choice","text":"自在ぼうきの性質に関する次の記述のうち、不適切なものはどれか。","options":["凹凸の多いところを掃くのに適している","浮遊じんをつくることが少ない","細かいほこりも除去することができる","部屋の隅や階段の角などをきちんと掃くことができる"],"answer":0,"explanation":"凹凸の多いところには不向きである","page":"148"},
+  {"category":"5編","type":"choice","text":"品質評価に使用する測定器具に関する次の記述のうち、最も不適切なものはどれか。","options":["光沢度計は、反射率で測定部の傷や凸凹の状態を評価する測定器である","グレースケール法は、赤外線LEDをカーペットに照射し、反射光を電圧値に変換し美観度１００％の基準カーペットと比較する測定器である","臭気測定器の６段階臭気強度表示法での表示５は「強烈な臭い」を指す","ATP拭きとり検査器は、「アデニシン三リン酸」を測定、数値化する検査器である"],"answer":1,"explanation":"カーペット汚染度測定器に関する記述","page":"152"},
+  {"category":"6編","type":"choice","text":"汚れの付着状態で、強い物理的方法を用いて除去する汚れはどれか。","options":["のっている","固着している","入り込んでいる","しみ込んでいる"],"answer":1,"explanation":"P160参照","page":"160"},
+  {"category":"6編","type":"choice","text":"表面の凹凸が激しく、特にくぼみが深い建材はどれか。","options":["しっくい","土壁","合成樹脂化粧合板","リノリウム"],"answer":1,"explanation":"P161参照","page":"161"},
+  {"category":"6編","type":"choice","text":"建築物清掃技術基準で安全衛生の向上のために求められているものはどれか。","options":["廃棄物の排出量の抑制","廃棄物保管場所の整理整頓","廃棄物の排出時点での分別","廃棄物収集時の保護手袋の着用"],"answer":3,"explanation":"P163参照","page":"163"},
+  {"category":"6編","type":"choice","text":"ほこりを除去する方法として適切でないものはどれか。","options":["乾いた綿布で拭く","たっぷりと水分を含ませたモップで拭く","おがくずに微量の水分を含ませ、これを床などにまいて掃く","粘土の低い不乾性の鉱油を少量綿布に含ませて拭く"],"answer":1,"explanation":"P164参照","page":"164"},
+  {"category":"6編","type":"choice","text":"屋外から屋内に靴による汚れが持ち込まれたときに、床面がその汚れを捕捉する場所として、最も適切なものはどれか。","options":["トラックオフ・エリア","ファネル・エリア","トラフィック・エリア","スポット・プロン・エリア"],"answer":0,"explanation":"P169参照","page":"169"},
+  {"category":"6編","type":"choice","text":"建築物の汚染レベルと場所の組み合わせのうち、最も不適切なものはどれか。","options":["極重汚染エリア　－　湯沸室","重汚染エリア　－　下層階の階段","中汚染エリア　－　会議室","軽汚染エリア　－　応接室"],"answer":0,"explanation":"給湯室は重汚染エリア","page":"170"},
+  {"category":"6編","type":"choice","text":"カーペットの繊維を燃やした時、縮れながらくすぶるように燃えて、髪を焼く臭いがするものとして、最も適切なものはどれか。","options":["綿","ウール","ナイロン","アクリル"],"answer":1,"explanation":"P171参照","page":"171"},
+  {"category":"6編","type":"choice","text":"ドライ方式を導入する際、基礎皮膜の硬化のために行うバフ作業のサイクルとして、最も適切なものはどれか。","options":["日に1～2回","週に1～2回","月に1～2回","年に1～2回"],"answer":0,"explanation":"P174参照","page":"174"},
+  {"category":"6編","type":"choice","text":"石材系床材の日常清掃として、最も不適切なものはどれか。","options":["ダストコントロール作業法での除じん","真空掃除機での除じん","自動床洗浄機での水洗浄","自在ぼうきでの除じん"],"answer":0,"explanation":"P176参照","page":"176"},
+  {"category":"6編","type":"choice","text":"ヘビートラフィック・エリアのカーペット床の吸じん作業を行う機材として、最も適切なものはどれか。","options":["カーペットスイーパー","アップライト型バキューム","ポット型バキューム","エクストラクター"],"answer":1,"explanation":"P179参照","page":"179"},
+  {"category":"6編","type":"choice","text":"ステンレススチールの表面仕上げにあてはまらないものはどれか。","options":["鏡面仕上げ","アルマイト仕上げ","エッチング仕上げ","ヘアライン仕上げ"],"answer":1,"explanation":"P84参照","page":"184"},
+  {"category":"6編","type":"choice","text":"エスカレータの清掃で、自在ぼうき又は真空掃除機を用いる部位はどれか。","options":["スカートパネル","スカートガード","デルタガード","ランディングプレート"],"answer":3,"explanation":"P190参照","page":"190"},
+  {"category":"7編","type":"choice","text":"作業計画作成にあたり、最も必要度の低いものはどれか。","options":["必要人員の人件費","作業場所の特徴","作業内容およびその区分","使用する資機材の種類"],"answer":0,"explanation":"作業計画作成段階では、他の事項を優先すべきである","page":"195"},
+  {"category":"7編","type":"choice","text":"清掃四区域のうち専用区域に含まれないものは次のうちどれか。","options":["役員室","会議室","機械室","応接室"],"answer":2,"explanation":"機械室は管理用区域である","page":"197"},
+  {"category":"7編","type":"choice","text":"1日の勤務時間の中で、標準作業時間に含まれないものは次のどれか。","options":["打合せ","教育研修","ごみなどの運搬","資機材の準備"],"answer":1,"explanation":"教育研修は除外時間である","page":"201"},
+  {"category":"7編","type":"choice","text":"作業仕様書に明記される項目として、不適切なものはどれか。","options":["作業回数","作業時間帯","床面積","配置人員数"],"answer":3,"explanation":"配置人員数は作業仕様書に記載されるべきものではない","page":"202"},
+  {"category":"7編","type":"choice","text":"病院清掃における医療面へ配慮について不適切なものはどれか。","options":["静かにほこりを立てないよう十分な注意を払う","患者優先に作業を行う","二次感染防止を意識する","診察よりも優先的に清掃作業を行う必要がある"],"answer":3,"explanation":"医師や看護師の診察は清掃作業より優先される","page":"211"},
+  {"category":"7編","type":"choice","text":"病院の清掃管理上のポイントとして不適切なものはどれか。","options":["清浄度の低い区域から高い区域へと作業を進める","ゾーニングごとに機械器具を使用する","感染性廃棄物の取り扱いについて教育指導を行う","マニュアルを整備して活用する"],"answer":0,"explanation":"洗浄度の高い区域から低い区域へと作業を進める","page":"212"},
+  {"category":"8編","type":"choice","text":"作業手順書作成の要点として最も適切でないものはどれか。","options":["成否","経費節減","安全","やりやすさ"],"answer":1,"explanation":"作業手順書作成の要点は、成否、安全、やりやすさである","page":"219"},
+  {"category":"8編","type":"choice","text":"作業の点検評価について、最も適切なものは次のうちどれか。","options":["どの建築物でも同じ評価項目を設定する","目視ではなく測定機器を使用する","業務に精通した者が評価する","評価基準は、奇数段階ではなく偶数段階を用いる"],"answer":2,"explanation":"当該業務に精通している事務所スタッフ等が望まれる","page":"220"},
+  {"category":"8編","type":"choice","text":"建築物清掃の改善の着眼点として、不適切なものはどれか。","options":["仕様書や作業基準表に限定されているか","衛生的環境の確保がなされているか","建築物全体が快適環境となっているか","安全が確保されているか"],"answer":0,"explanation":"仕様書や作業基準表に限定せず建築物全体を対象とする","page":"222"},
+  {"category":"8編","type":"choice","text":"品質インスペクションの実施手順として、適切なものはどれか。","options":["計画→準備→点検→評価→改善→再点検→再評価","計画→準備→点検→評価→再点検→改善→再評価","準備→計画→点検→評価→改善→再点検→再評価","準備→計画→点検→評価→再点検→改善→再評価"],"answer":0,"explanation":"P224　図8－5参照","page":"224"},
+  {"category":"8編","type":"choice","text":"事業所管理品質の項目で、不適切なものはどれか。","options":["教育訓練","作業計画","現場指導","顧客対応"],"answer":1,"explanation":"作業計画は事務所管理品質ではなく、現場管理品質である","page":"224"},
+  {"category":"8編","type":"choice","text":"建築物清掃の品質点検の方法についての記述のうち、最も不適切なものはどれか。","options":["目視検査","嗅覚検査","接触検査","味覚検査"],"answer":3,"explanation":"検査方法として危険であり不適切である","page":"233"},
+  {"category":"9編","type":"choice","text":"廃棄物処理の原則でないものは次のうちどれか。","options":["安定化","分散化","減量化","安全化"],"answer":1,"explanation":"廃棄物処理の原則は、減量化、安定化、安全化（無害化）である","page":"240"},
+  {"category":"9編","type":"choice","text":"ビルとごみ排出量の関係の記述のうち最も不適切なものはどれか。","options":["ビルごみの排出量はビルが大きいほど多くなる","ビルの用途によってもごみの排出量には著しい差異がある","ビルで営まれる業務の態様や状況によってもごみ量は相違する","ごみの排出量には季節によっての偏差はない"],"answer":3,"explanation":"事務所では年度末・決算期、店舗では中元・年末など毎月同じ量ではない","page":"244"},
+  {"category":"9編","type":"choice","text":"ごみの三成分表示法の三成分でないものは次のうちどれか。","options":["灰分（カイブン）","水分","可燃分","不燃分"],"answer":3,"explanation":"ごみの三成分表示法は、灰分、水分、可燃分である","page":"245"},
+  {"category":"9編","type":"choice","text":"一般的なビル内のごみ処理過程の順序として最も適切なものは次のうちどれか。","options":["収集→運搬→貯蔵→中間処理→搬出","収集→搬出→貯蔵→運搬→中間処理","運搬→貯蔵→中間処理→収集→搬出","収集→運搬→貯蔵→搬出→中間処理"],"answer":0,"explanation":"P247 図9-3参照","page":"247"},
+  {"category":"9編","type":"choice","text":"ごみの一時貯留容器について、適切でないものはどれか。","options":["洗浄しやすいもの","できるだけ多数配置すること","美観を損なわないもの","悪臭が漏れない構造であること"],"answer":1,"explanation":"必要な場所ごとに必要数配置する","page":"247"},
+  {"category":"9編","type":"choice","text":"ビル内のごみの中間処理について、現在ではほとんど用いられない方法は次のうちどれか。","options":["破砕処理","脱水処理","焼却処理","圧縮処理"],"answer":2,"explanation":"大気汚染や防災上の問題から、ビル内の焼却炉設備は著しく減少している","page":"249"},
+  {"category":"10編","type":"choice","text":"ビルメンテナンス業における労働災害発生状況に関する記述で最も不適切なものはどれか。","options":["大部分は清掃作業中に発生している","被災者は若年齢者が大半である","最も多いのが転倒事故である","安全教育が徹底されていない"],"answer":1,"explanation":"P257参照","page":"257"},
+  {"category":"10編","type":"choice","text":"電気・機械設備の取扱いにあたって最も不適切なものはどれか。","options":["危険表示のある場所へむやみに近寄ったり手を触れたりしない","電灯のコードは、もつれることのないように釘や金物にかける","濡れた手や、はだしのまま直接電気機器や配線に触れないこと","電気機器の機能点検はスイッチを切ってから行うこと"],"answer":1,"explanation":"電灯のコードは、釘や金物にかけないこと","page":"268"},
+  {"category":"10編","type":"choice","text":"整理整頓の要領として、品物を積み上げる場合の原則として最も不適切なものはどれか。","options":["形のそろった物はそろえて積むこと","すぐ使う予定の物は下積みにしないこと","重い物から軽い物へ、大きな物から小さな物へと積み上げること","スペースを取らないよう長いものは立てて積む"],"answer":3,"explanation":"長いものは寝かせて積み、転がる恐れのあるものには必ずかませ物をする","page":"274"},
+  {"category":"10編","type":"choice","text":"保護具について最も不適切なものはどれか。","options":["保護帽は頭部のけがを防止するために着用","安全帯は墜落の防止に効果がある","目の傷害を防ぐために保護眼鏡を着用","有機溶剤を使用するのでサージカルマスクを着用"],"answer":3,"explanation":"防毒マスクを使用する","page":"277"},
+  {"category":"10編","type":"choice","text":"リスクアセスメントについて、最も不適切なものは次のうちどれか。","options":["毎年の安全衛生計画を作成する","主に行動面の対策を対象とする","よく話し合って検討する","リスクを見積もり、数値化する"],"answer":1,"explanation":"主に設備面の対策を対象とする","page":"286"},
+  {"category":"11編","type":"choice","text":"病原性微生物であるウイルスの大きさはどれか。","options":["20～30μm","3～4μm","0.1～2.5μm","0.01～0.25μm"],"answer":3,"explanation":"P290 2.2 感染の経路と病原性微生物 参照","page":"290"},
+  {"category":"11編","type":"choice","text":"消毒薬の殺菌能力についての記述で最も不適切なものは次のどれか。","options":["使用濃度","温度","湿度","作用時間"],"answer":2,"explanation":"P293参照","page":"293"},
+  {"category":"11編","type":"choice","text":"石鹸を使用して手洗いする最も不適切な場合はどれか。","options":["食事をとった後","トイレの後","清掃作業の後","見た目に汚れているとき"],"answer":0,"explanation":"食事前に行う","page":"294"},
+  {"category":"12編","type":"choice","text":"建築物衛生法における建築物清掃の管理基準等に関して正しいのは次のうちどれか。","options":["定期清掃（大掃除）を1年以内ごとに1回、定期的に、統一的に行う","カーペットのシャンプークリーニングを6ケ月ごとに1回行う","日常的に清掃を行わない箇所の清掃について、6月以内ごとに1回定期的に汚れの状況を点検する","清掃用機械器具は1月ごとに取替え等を行う"],"answer":2,"explanation":"P299参照","page":"299"},
+  {"category":"12編","type":"choice","text":"「建築物における衛生的環境の確保に関する法律」に基づく事業登録についての記述のうち、不適切なものは次のどれか。","options":["登録事業の種類は、8職種である","登録の有効期間は、6年である","複数の都道府県に営業所を持つ事業者は厚生労働大臣に登録を行う","登録を受けた業者は、登録業者である旨の表示をすることができる"],"answer":2,"explanation":"P300参照","page":"300"},
+  {"category":"12編","type":"choice","text":"次のうち事業の登録の種類について誤っているものはどれか。","options":["建築物飲料水貯水槽清掃業","建築物ねずみ昆虫等防除業","建築物解体業","建築物清掃業"],"answer":2,"explanation":"P300　1.2.4 事業の登録 参照","page":"300"},
+  {"category":"12編","type":"choice","text":"建築物環境衛生管理技術者の職務で最も不適切なものはどれか。","options":["業務計画の立案","所有者に対する改善計画の提示","業務の指揮監督","管理基準に関する検査の評価"],"answer":1,"explanation":"P300　1.2.3 建築物環境衛生管理技術者 参照","page":"300"},
+  {"category":"12編","type":"choice","text":"清掃作業監督者の役割で質的基準に不適切なものは次のどれか。","options":["床面の管理","カーペットの管理","収支報告書等帳簿類の保管","苦情及び緊急連絡体制"],"answer":2,"explanation":"P301参照","page":"301"},
+  {"category":"12編","type":"choice","text":"廃棄物処理法で適正化を求めていないものはどれか。","options":["分別","解体","収集","再生"],"answer":1,"explanation":"解体はしない","page":"303"},
+  {"category":"12編","type":"choice","text":"労働安全衛生法の目的の中で次のうち該当しないものはどれか。","options":["労働災害防止のための危害防止基準の確立","責任体制の明確化及び自主的活動の促進の措置","労働者の安全と健康を確保","作業効率の向上のための措置"],"answer":3,"explanation":"P307参照","page":"307"},
+  {"category":"12編","type":"choice","text":"ゴンドラ安全規則で規定されていないものはどれか。","options":["製造および設置の許可","使用時の立会い","性能検査","廃止の届出"],"answer":1,"explanation":"使用および就業の条件","page":"307"},
+  {"category":"12編","type":"choice","text":"ビルメンテナンス業におけるパートタイム労働者の労働災害防止のためのガイドラインにない項目は次のうちどれか。","options":["健康確保対策の推進","安全な作業方法の確立","公正な待遇の確保","安全衛生管理体制の整備"],"answer":2,"explanation":"P309　参照","page":"309"}
 ]; // ← ここまでが問題データ。上に追加・編集してください。
 
 // ============================================================
@@ -1767,5 +4548,6 @@ function importQuestions(event) {
 // 初期化
 showStart();
 </script>
-</body>
-</html>
+
+
+</body></html>
